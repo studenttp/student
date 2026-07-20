@@ -3,55 +3,91 @@
 // سيتم استبدال هذه البيانات بـ Firebase لاحقًا
 // ===================================
 
-const students = [
 
-{
 
-code:"A101",
 
-name:"محمد",
+function async function searchStudent(){
 
-points:28,
+const code = document
+.getElementById("studentCode")
+.value.trim();
 
-star:18,
 
-message:"🌟 رائع! استمر في الاجتهاد."
+const result =
+document.getElementById("result");
 
-},
 
-{
+if(code===""){
 
-code:"A102",
+result.innerHTML="⚠️ أدخل رمز الطالب";
 
-name:"عبدالله",
-
-points:41,
-
-star:27,
-
-message:"🏆 أنت من الطلاب المتميزين."
-
-},
-
-{
-
-code:"A103",
-
-name:"سارة",
-
-points:35,
-
-star:22,
-
-message:"💛 أحسنتِ، استمري في التألق."
+return;
 
 }
 
-];
+
+try{
+
+
+const snapshot =
+await db.collection("students")
+.where("code","==",code)
+.get();
 
 
 
-function searchStudent(){
+if(snapshot.empty){
+
+result.innerHTML="❌ الرمز غير موجود";
+
+return;
+
+}
+
+
+
+snapshot.forEach((doc)=>{
+
+
+const student=doc.data();
+
+
+result.innerHTML=`
+
+<div class="student-card">
+
+<h2>
+🌟 ${student.name}
+</h2>
+
+<h3>
+⭐ النقاط: ${student.points}
+</h3>
+
+<p>
+أحسنت، استمر في التألق 🌈
+</p>
+
+</div>
+
+`;
+
+});
+
+
+}
+
+catch(error){
+
+console.log(error);
+
+result.innerHTML=
+"حدث خطأ في الاتصال";
+
+}
+
+
+}
 
 const code=document
 .getElementById("studentCode")
