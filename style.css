@@ -114,9 +114,11 @@ body{
 
     bottom:25px;
 
-    width:190px;
+    width:220px;
 
-    max-width:18vw;
+    max-width:22vw;
+
+}
 
     animation:float 3s infinite ease-in-out;
 
@@ -229,9 +231,11 @@ body{
 }
 
 
-.medal{
+..medal{
 
     font-size:60px;
+    text-align:center;
+    display:block;
 
 }
 
