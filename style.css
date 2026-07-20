@@ -439,7 +439,7 @@ footer{
     font-size:40px;
 }
 
-}
+
 
 
 .boy,
@@ -555,7 +555,7 @@ footer{
     .title-images .boy,
 .title-images .girl{
 
-    width:75px;
+    width:100px;
 
 }
 
@@ -563,7 +563,7 @@ footer{
 @media(max-width:600px){
 
     .guide-title .guide-girl2{
-        width:30px !important;
+        width:100px !important;
     }
 .winner{
     text-align:center;
@@ -590,6 +590,17 @@ footer{
 
     }
 
+.winner{
+    text-align:center;
 }
+
+.medal{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
+    margin:0 auto 15px;
+}
+
 
 }
