@@ -104,7 +104,7 @@ right:35px;
 
 bottom:0;
 
-width:20px;
+width:100px;
 
 animation:float 3s ease-in-out infinite;
 
@@ -118,7 +118,7 @@ left:35px;
 
 bottom:0;
 
-width:20px;
+width:100px;
 
 animation:float 3s ease-in-out infinite;
 
@@ -281,7 +281,7 @@ color:#666;
 
 .guide{
     width:92%;
-    max-width:900px;
+    max-width:100px;
     margin:70px auto;
     position:relative;
 }
@@ -438,7 +438,7 @@ font-size:20px;
 .boy
 girl{
 
-width:40px;
+width:100px;
 
 }
 
@@ -478,7 +478,7 @@ grid-template-columns:1fr;
 }
 
 .small-character{
-    width:20px;
+    width:100px;
     height:auto;
 }
 
@@ -493,14 +493,14 @@ grid-template-columns:1fr;
 }
 
 .guide-girl2{
-    width:20px;
+    width:100px;
 }
 
 
 /* النجمة فوق نجم الشهر */
 
 .month-star{
-    width:10px;
+    width:100px;
     display:block;
     margin:0 auto 10px;
 }
