@@ -494,21 +494,31 @@ footer{
 
 }
 .title-images{
+
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:15px;
+    gap:10px;
+
 }
+
 
 .title-images .boy,
 .title-images .girl{
+
     position:static;
-    width:150px;
-    max-width:20vw;
+
+    width:130px;
+
+    max-width:25vw;
+
 }
 
+
 .title-images h1{
+
     margin:0;
+
 }
 .guide-title img.small-character{
     width:40px !important;
@@ -524,6 +534,11 @@ footer{
 .guide-title .guide-girl2{
     width:35px !important;
     height:auto !important;
+    .title-images .boy,
+.title-images .girl{
+
+    width:75px;
+
 }
 
 
