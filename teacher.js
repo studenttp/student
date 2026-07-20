@@ -1,165 +1,147 @@
-// كلمة مرور المعلمة (سنربطها لاحقًا بـ Firebase)
+// ==================================
+// لوحة المعلمة - Firebase
+// ==================================
+
+
+// كلمة مرور المعلمة مؤقتًا
 const teacherPassword = "12345";
 
-
-// بيانات الطلاب مؤقتًا
-let students = JSON.parse(localStorage.getItem("students")) || [];
 
 
 // تسجيل الدخول
 
 function login(){
 
-    let password =
-    document.getElementById("password").value;
-
-    let error =
-    document.getElementById("loginError");
+let password =
+document.getElementById("password").value;
 
 
-    if(password === teacherPassword){
+if(password === teacherPassword){
 
-        document.getElementById("loginBox").style.display="none";
+document.getElementById("loginBox").style.display="none";
 
-        document.getElementById("dashboard").style.display="block";
+document.getElementById("dashboard").style.display="block";
 
-        showStudents();
 
-    }else{
+loadStudents();
 
-        error.innerHTML="❌ كلمة المرور غير صحيحة";
 
-    }
+}
+
+else{
+
+document.getElementById("loginError").innerHTML=
+"❌ كلمة المرور غير صحيحة";
+
+}
 
 }
 
 
 
-// إضافة طالب
 
-function addStudent(){
+// إضافة طالب إلى Firestore
 
-    let name =
-    document.getElementById("studentName").value;
-
-    let code =
-    document.getElementById("studentCode").value;
-
-    let points =
-    document.getElementById("studentPoints").value;
+async function addStudent(){
 
 
-    if(name==="" || code===""){
-
-        alert("أكمل بيانات الطالب");
-
-        return;
-
-    }
+let name =
+document.getElementById("studentName").value;
 
 
-    let student={
-
-        name:name,
-
-        code:code,
-
-        points:Number(points)
-
-    };
+let code =
+document.getElementById("studentCode").value;
 
 
-    students.push(student);
+let points =
+Number(document.getElementById("studentPoints").value);
 
 
-    saveStudents();
 
+if(name==="" || code===""){
 
-    showStudents();
+alert("أدخل بيانات الطالب");
 
-
-    alert("تمت إضافة الطالب ⭐");
+return;
 
 }
+
+
+
+await db.collection("students").add({
+
+name:name,
+
+code:code,
+
+points:points
+
+});
+
+
+
+alert("تمت إضافة الطالب ⭐");
+
+
+
+loadStudents();
+
+
+
+}
+
 
 
 
 // عرض الطلاب
 
-function showStudents(){
-
-    let list =
-    document.getElementById("studentsList");
+async function loadStudents(){
 
 
-    list.innerHTML="";
+let list =
+document.getElementById("studentsList");
 
 
-    students.forEach((student,index)=>{
+list.innerHTML="";
 
 
-        list.innerHTML += `
-
-        <div class="student-item">
-
-        🌟 ${student.name}
-
-        <br>
-
-        🔑 ${student.code}
-
-        <br>
-
-        ⭐ النقاط: ${student.points}
-
-        <br>
-
-        <button class="delete"
-        onclick="deleteStudent(${index})">
-
-        حذف
-
-        </button>
-
-        </div>
-
-        `;
+const snapshot =
+await db.collection("students").get();
 
 
-    });
+
+snapshot.forEach((doc)=>{
+
+
+let student=doc.data();
+
+
+
+list.innerHTML += `
+
+<div class="student-item">
+
+🌟 ${student.name}
+
+<br>
+
+🔑 ${student.code}
+
+<br>
+
+⭐ ${student.points}
+
+</div>
+
+`;
+
+
+
+});
 
 
 }
 
-
-
-// حذف طالب
-
-function deleteStudent(index){
-
-    students.splice(index,1);
-
-    saveStudents();
-
-    showStudents();
-
-}
-
-
-
-// حفظ البيانات
-
-function saveStudents(){
-
-    localStorage.setItem(
-
-        "students",
-
-        JSON.stringify(students)
-
-    );
-
-}
 
 
 
@@ -167,23 +149,21 @@ function saveStudents(){
 
 function changeStar(){
 
-    let name =
-    document.getElementById("starName").value;
+
+let name =
+document.getElementById("starName").value;
 
 
-    localStorage.setItem(
+localStorage.setItem(
 
-        "starStudent",
+"starStudent",
 
-        name
+name
 
-    );
+);
 
 
-    alert(
+alert("تم اختيار نجم الشهر 🏆");
 
-    "تم اختيار نجم الشهر ⭐"
-
-    );
 
 }
