@@ -479,3 +479,14 @@ grid-template-columns:1fr;
     font-weight: 600;
 }
 }
+.guide {
+    position: relative;
+}
+
+.guide-girl {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 180px;
+    height: auto;
+}
