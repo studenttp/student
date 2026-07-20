@@ -15,7 +15,7 @@ html{
 body{
     direction:rtl;
     font-family:'Cairo',sans-serif;
-    background:#FFF8E8;
+    background:#FAF9F6;
     color:#444;
     overflow-x:hidden;
 }
@@ -117,8 +117,6 @@ body{
     width:220px;
 
     max-width:22vw;
-
-}
 
     animation:float 3s infinite ease-in-out;
 
@@ -521,17 +519,6 @@ footer{
 }
 
 
-.title-images .boy,
-.title-images .girl{
-
-    position:static;
-
-    width:130px;
-
-    max-width:25vw;
-
-}
-
 
 .title-images h1{
 
@@ -575,20 +562,7 @@ footer{
     text-align:center;
     font-size:55px !important;
 }
-.title-images .boy,
-.title-images .girl{
 
-    width:180px !important;
-    max-width:25vw !important;
-
-}@media(max-width:600px){
-
-    .title-images .boy,
-    .title-images .girl{
-
-        width:100px !important;
-
-    }
 
 .winner{
     text-align:center;
@@ -601,6 +575,20 @@ footer{
     font-size:70px;
     margin:0 auto 15px;
 }
+.title-images .boy,
+.title-images .girl{
 
+    width:150px;
 
 }
+
+
+@media(max-width:600px){
+
+.title-images .boy,
+.title-images .girl{
+
+    width:80px;
+
+}
+
