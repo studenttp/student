@@ -435,11 +435,10 @@ font-size:20px;
 
 }
 
-.photo-output,
-.copy_EOCDF332-
-C61F-4A7C-9AF0-1628СDEEE8B3{
+.boy
+girl{
 
-width:120px;
+width:40px;
 
 }
 
@@ -479,7 +478,7 @@ grid-template-columns:1fr;
 }
 
 .small-character{
-    width:45px;
+    width:20px;
     height:auto;
 }
 
@@ -494,14 +493,14 @@ grid-template-columns:1fr;
 }
 
 .guide-girl2{
-    width:70px;
+    width:20px;
 }
 
 
 /* النجمة فوق نجم الشهر */
 
 .month-star{
-    width:45px;
+    width:10px;
     display:block;
     margin:0 auto 10px;
 }
