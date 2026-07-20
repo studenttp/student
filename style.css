@@ -96,7 +96,7 @@ background:#FFA000;
  الشخصيات
 ==========================*/
 
-.photo-output{
+boy{
 
 position:absolute;
 
@@ -110,8 +110,7 @@ animation:float 3s ease-in-out infinite;
 
 }
 
-.copy_EOCDF332-
-C61F-4A7C-9AF0-1628СDEEE8B3{
+.girl{
 
 position:absolute;
 
@@ -281,6 +280,11 @@ color:#666;
 ==========================*/
 
 .guide{
+    width:92%;
+    max-width:900px;
+    margin:70px auto;
+    position:relative;
+}
 
 .points-guide{
     width:90%;
@@ -465,5 +469,40 @@ grid-template-columns:1fr;
 .guide {
     position: relative;
 }
+/* صور العنوان */
 
+.title-images{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+}
+
+.small-character{
+    width:45px;
+    height:auto;
+}
+
+
+/* صورة بجانب دليل النقاط */
+
+.guide-title{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.guide-girl2{
+    width:70px;
+}
+
+
+/* النجمة فوق نجم الشهر */
+
+.month-star{
+    width:45px;
+    display:block;
+    margin:0 auto 10px;
+}
 .
