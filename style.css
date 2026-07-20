@@ -28,7 +28,7 @@ body{
 .hero{
 
     min-height:100vh;
-    background:linear-gradient(#FFF5B8,#FFE07A);
+    background:linear-gradient(#FFFDF5,#FAF9F6);
 
     display:flex;
     justify-content:center;
