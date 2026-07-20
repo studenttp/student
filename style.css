@@ -521,5 +521,20 @@ footer{
     .guide-title img.small-character{
         width:30px !important;
     }
+.guide-girl{
+
+    width:45px;
+    height:auto;
+
+}
+
+
+@media(max-width:600px){
+
+    .guide-girl{
+
+        width:35px;
+
+    }
 
 }
