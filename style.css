@@ -236,7 +236,9 @@ body{
     font-size:60px;
     text-align:center;
     display:block;
-
+    }
+.winner{
+    text-align:center;
 }
 
 
@@ -443,7 +445,7 @@ footer{
 .boy,
 .girl{
 
-    width:150px;
+    width:200px;
 
     bottom:20px;
 
