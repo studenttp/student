@@ -493,6 +493,22 @@ footer{
     width:55px;
 
 }
+.title-images{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
 
+.title-images .boy,
+.title-images .girl{
+    position:static;
+    width:90px;
+    max-width:20vw;
+}
+
+.title-images h1{
+    margin:0;
+}
 
 }
