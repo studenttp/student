@@ -104,7 +104,7 @@ right:35px;
 
 bottom:0;
 
-width:230px;
+width:20px;
 
 animation:float 3s ease-in-out infinite;
 
@@ -118,7 +118,7 @@ left:35px;
 
 bottom:0;
 
-width:230px;
+width:20px;
 
 animation:float 3s ease-in-out infinite;
 
@@ -415,7 +415,7 @@ to{transform:translateX(-50%) rotate(360deg);}
 الجوال
 ==========================*/
 
-@media(max-width:768px){
+@media(max-width:100px){
 
 .hero{
 
