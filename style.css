@@ -96,7 +96,7 @@ background:#FFA000;
  الشخصيات
 ==========================*/
 
-.boy{
+.photo-output{
 
 position:absolute;
 
@@ -110,7 +110,8 @@ animation:float 3s ease-in-out infinite;
 
 }
 
-.girl{
+.copy_EOCDF332-
+C61F-4A7C-9AF0-1628СDEEE8B3{
 
 position:absolute;
 
@@ -124,21 +125,6 @@ animation:float 3s ease-in-out infinite;
 
 }
 
-.stars{
-
-position:absolute;
-
-top:30px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:170px;
-
-animation:spin 20s linear infinite;
-
-}
 
 /*==========================
 البحث
@@ -318,7 +304,6 @@ color:#4CAF50;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
 gap:25px;
 
@@ -446,18 +431,16 @@ font-size:20px;
 
 }
 
-.boy,
-.girl{
+.photo-output,
+.copy_EOCDF332-
+C61F-4A7C-9AF0-1628СDEEE8B3{
 
 width:120px;
 
 }
 
-.stars{
 
-width:110px;
 
-}
 
 .search-box{
 
@@ -483,10 +466,4 @@ grid-template-columns:1fr;
     position: relative;
 }
 
-.guide-girl {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-    width: 180px;
-    height: auto;
-}
+.
