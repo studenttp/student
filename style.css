@@ -490,7 +490,7 @@ footer{
 
 .small-character{
 
-    width:35px;
+    width:45px;
 
 }
 .title-images{
@@ -503,7 +503,7 @@ footer{
 .title-images .boy,
 .title-images .girl{
     position:static;
-    width:90px;
+    width:150px;
     max-width:20vw;
 }
 
