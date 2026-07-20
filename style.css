@@ -1,0 +1,474 @@
+/* ===========================
+   نجوم صفي
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    direction:rtl;
+    font-family:'Cairo',sans-serif;
+    background:#FFF8E8;
+    color:#444;
+    overflow-x:hidden;
+}
+
+/*==========================
+  الواجهة الرئيسية
+==========================*/
+
+.hero{
+    position:relative;
+    min-height:100vh;
+    background:linear-gradient(180deg,#FFF5B8,#FFE07A);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.12);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:64px;
+    color:#FF9800;
+    margin-bottom:15px;
+    text-shadow:3px 3px 0 #fff;
+}
+
+.hero p{
+    font-size:26px;
+    color:#555;
+    margin-bottom:35px;
+    line-height:1.9;
+}
+
+.start-btn{
+
+display:inline-block;
+
+padding:15px 45px;
+
+background:#FFB300;
+
+color:white;
+
+font-size:22px;
+
+text-decoration:none;
+
+border-radius:50px;
+
+transition:.3s;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.start-btn:hover{
+
+transform:translateY(-4px);
+
+background:#FFA000;
+
+}
+
+/*==========================
+ الشخصيات
+==========================*/
+
+.boy{
+
+position:absolute;
+
+right:35px;
+
+bottom:0;
+
+width:230px;
+
+animation:float 3s ease-in-out infinite;
+
+}
+
+.girl{
+
+position:absolute;
+
+left:35px;
+
+bottom:0;
+
+width:230px;
+
+animation:float 3s ease-in-out infinite;
+
+}
+
+.stars{
+
+position:absolute;
+
+top:30px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:170px;
+
+animation:spin 20s linear infinite;
+
+}
+
+/*==========================
+البحث
+==========================*/
+
+.search-box{
+
+width:92%;
+
+max-width:900px;
+
+margin:70px auto;
+
+background:white;
+
+padding:40px;
+
+border-radius:35px;
+
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+}
+
+.search-box h2{
+
+font-size:38px;
+
+color:#2196F3;
+
+margin-bottom:10px;
+
+}
+
+.search-box p{
+
+font-size:20px;
+
+margin-bottom:25px;
+
+color:#666;
+
+}
+
+.search-box input{
+
+width:100%;
+
+padding:18px;
+
+font-size:20px;
+
+border:3px solid #90CAF9;
+
+border-radius:20px;
+
+outline:none;
+
+margin-bottom:20px;
+
+}
+
+.search-box button{
+
+background:#4CAF50;
+
+color:white;
+
+border:none;
+
+padding:16px 40px;
+
+font-size:22px;
+
+border-radius:20px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.search-box button:hover{
+
+background:#43A047;
+
+}
+
+/*==========================
+نجم الشهر
+==========================*/
+
+.star-month{
+
+width:92%;
+
+max-width:900px;
+
+margin:auto;
+
+padding:40px;
+
+}
+
+.star-month h2{
+
+font-size:40px;
+
+color:#FF9800;
+
+margin-bottom:25px;
+
+}
+
+.winner{
+
+background:white;
+
+padding:35px;
+
+border-radius:35px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.medal{
+
+font-size:70px;
+
+margin-bottom:20px;
+
+}
+
+.winner h3{
+
+font-size:34px;
+
+color:#E91E63;
+
+margin-bottom:10px;
+
+}
+
+.winner p{
+
+font-size:20px;
+
+color:#666;
+
+}
+
+/*==========================
+دليل النقاط
+==========================*/
+
+.guide{
+
+width:92%;
+
+max-width:1100px;
+
+margin:70px auto;
+
+}
+
+.guide h2{
+
+font-size:40px;
+
+margin-bottom:35px;
+
+color:#4CAF50;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.card{
+
+background:white;
+
+border-radius:30px;
+
+padding:30px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.3s;
+
+font-size:55px;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.card h3{
+
+font-size:23px;
+
+margin:20px 0 10px;
+
+color:#444;
+
+}
+
+.card span{
+
+display:inline-block;
+
+padding:8px 20px;
+
+background:#E8F5E9;
+
+border-radius:30px;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#2E7D32;
+
+}
+
+.danger span{
+
+background:#FFEBEE;
+
+color:#C62828;
+
+}
+
+/*==========================
+الفوتر
+==========================*/
+
+footer{
+
+margin-top:70px;
+
+background:#FFD54F;
+
+padding:25px;
+
+font-size:20px;
+
+color:#555;
+
+}
+
+/*==========================
+الحركات
+==========================*/
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+
+50%{transform:translateY(-12px);}
+
+100%{transform:translateY(0);}
+
+}
+
+@keyframes spin{
+
+from{transform:translateX(-50%) rotate(0);}
+
+to{transform:translateX(-50%) rotate(360deg);}
+
+}
+
+/*==========================
+الجوال
+==========================*/
+
+@media(max-width:768px){
+
+.hero{
+
+min-height:85vh;
+
+}
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+}
+
+.boy,
+.girl{
+
+width:120px;
+
+}
+
+.stars{
+
+width:110px;
+
+}
+
+.search-box{
+
+padding:25px;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+}
