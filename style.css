@@ -492,8 +492,9 @@ grid-template-columns:1fr;
     gap:15px;
 }
 
-.guide-girl2{
+small-character{
     width:100px;
+    height:auto;
 }
 
 
