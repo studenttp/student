@@ -504,4 +504,7 @@ grid-template-columns:1fr;
     display:block;
     margin:0 auto 10px;
 }
+img{
+    user-select:none;
+}
 .
