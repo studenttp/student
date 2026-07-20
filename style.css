@@ -510,5 +510,16 @@ footer{
 .title-images h1{
     margin:0;
 }
+.guide-title img.small-character{
+    width:40px !important;
+    height:auto !important;
+}
+
+
+@media(max-width:600px){
+
+    .guide-title img.small-character{
+        width:30px !important;
+    }
 
 }
