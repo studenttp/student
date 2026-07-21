@@ -15,7 +15,7 @@ const takSound = new Audio("assets/sounds/tak.mp3");
 function searchStudent(){
 
 const code = document
-.getElementById("studentCode")
+.getElementById("studentcode")
 .value.trim();
 
 
