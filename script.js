@@ -35,34 +35,16 @@ result.innerHTML=`
 
 `;
 
-playError();
-return;
+// البحث في Firebase
 
-}
+db.collection("students")
+.where("code","==",code)
+.get()
 
-
-// بيانات مؤقتة (سيتم ربط Firebase لاحقًا)
-
-const students=[
-
-{
-code:"A102",
-name:"أحمد",
-star:5,
-points:25,
-message:"أحسنت، استمر في التألق 🌈"
-}
-
-];
+.then((snapshot)=>{
 
 
-const student = students.find(
-s=>s.code===code
-);
-
-
-
-if(!student){
+if(snapshot.empty){
 
 result.innerHTML=`
 
@@ -75,9 +57,17 @@ result.innerHTML=`
 `;
 
 playError();
+
 return;
 
 }
+
+
+
+snapshot.forEach((doc)=>{
+
+
+const student = doc.data();
 
 
 
@@ -122,7 +112,27 @@ ${student.message}
 `;
 
 
+
 playSuccess();
+
+
+
+});
+
+
+})
+
+.catch((error)=>{
+
+
+console.log(error);
+
+
+result.innerHTML=
+"حدث خطأ في الاتصال";
+
+
+});
 
 
 }
