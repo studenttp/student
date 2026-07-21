@@ -10,28 +10,17 @@ const takSound = new Audio("assets/sounds/tak.mp3");
 // ===================================
 
 
-// صوت ظهور نتيجة الطالب
-function playSuccess(){
+// البحث عن الطالب
 
-    clappingSound.play();
-    shineSound.play();
+function searchStudent(){
 
-}
-
-
-// صوت الخطأ
-function playError(){
-
-    takSound.play();
-
-}
-
-const code=document
+const code = document
 .getElementById("studentCode")
 .value.trim();
 
-const result=document
-.getElementById("result");
+
+const result =
+document.getElementById("result");
 
 
 if(code===""){
@@ -46,16 +35,29 @@ result.innerHTML=`
 
 `;
 
+playError();
 return;
 
 }
 
 
+// بيانات مؤقتة (سيتم ربط Firebase لاحقًا)
 
-const student=students.find(
+const students=[
 
+{
+code:"A102",
+name:"أحمد",
+star:5,
+points:25,
+message:"أحسنت، استمر في التألق 🌈"
+}
+
+];
+
+
+const student = students.find(
 s=>s.code===code
-
 );
 
 
@@ -72,6 +74,7 @@ result.innerHTML=`
 
 `;
 
+playError();
 return;
 
 }
@@ -83,46 +86,67 @@ result.innerHTML=`
 <div class="student-card">
 
 <h2>
-
 🌟 ${student.name}
-
 </h2>
+
 
 <div class="points">
 
 ⭐ عدد النجوم
 
 <h1>
-
 ${student.star}
-
 </h1>
 
 </div>
+
 
 <div class="points">
 
 🏆 مجموع النقاط
 
 <h1>
-
 ${student.points}
-
 </h1>
 
 </div>
 
+
 <p>
-
 ${student.message}
-
 </p>
+
 
 </div>
 
 `;
 
+
+playSuccess();
+
+
 }
+
+
+
+// أصوات النجاح والخطأ
+
+function playSuccess(){
+
+clappingSound.play();
+shineSound.play();
+
+}
+
+
+function playError(){
+
+takSound.play();
+
+}
+
+
+
 
 // تغيير اسم نجم الشهر
 
@@ -130,18 +154,19 @@ document.addEventListener(
 "DOMContentLoaded",
 ()=>{
 
-    const starStudent =
-    document.getElementById("starStudent");
+const starStudent =
+document.getElementById("starStudent");
 
-    if(starStudent){
 
-        starStudent.textContent =
-        "عبدالله";
+if(starStudent){
 
-    }
+starStudent.textContent =
+"عبدالله";
 
+}
 
 });
+
 
 
 
@@ -153,32 +178,33 @@ document.querySelector(".start-btn");
 
 if(startBtn){
 
-    startBtn.addEventListener(
-    "click",
-    function(){
+startBtn.addEventListener(
+"click",
+()=>{
 
-        clickSound.play();
+clickSound.play();
 
-    });
+});
 
 }
+
 
 
 
 // صوت زر البحث
 
 const searchBtn =
-document.querySelector(".search-btn");
+document.querySelector("button");
 
 
 if(searchBtn){
 
-    searchBtn.addEventListener(
-    "click",
-    ()=>{
+searchBtn.addEventListener(
+"click",
+()=>{
 
-        clickSound.play();
+clickSound.play();
 
-    });
+});
 
 }
