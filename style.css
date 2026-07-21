@@ -361,9 +361,9 @@ footer p{
         min-height:90vh;
     }
 
-    .hero h1{
-        font-size:50px;
-    }
+    .hero-title{
+    font-size:70px;
+}
 
     .hero p{
         font-size:18px;
