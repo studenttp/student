@@ -48,7 +48,7 @@ body{
     z-index:2;
 }
 .hero-title{
-    font-size:clamp(90px,15vw,140px);
+    font-size:clamp(100px,20vw,190px);
     color:#FF9800;
     text-shadow:5px 5px 0 #fff;
     font-weight:900;
@@ -71,7 +71,7 @@ body{
 
 .boy,
 .girl{
-    width:250px;
+    width:300px;
     animation:float 3s ease-in-out infinite;
 }
 
@@ -362,7 +362,7 @@ footer p{
     }
 
     .hero h1{
-        font-size:38px;
+        font-size:50px;
     }
 
     .hero p{
@@ -376,7 +376,7 @@ footer p{
 
     .boy,
     .girl{
-        width:200px;
+        width:250px;
         max-width:none;
     }
 
