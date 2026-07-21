@@ -73,7 +73,7 @@ body{
 
 .boy,
 .girl{
-    width:300px;
+    width:420px;
     animation:float 3s ease-in-out infinite;
 }
 
@@ -82,10 +82,10 @@ body{
 }
 
 .hero p{
-    font-size:clamp(18px,3vw,26px);
+    font-size:clamp(15px,2vw,25px);
     color:#555;
-    line-height:1.9;
-    margin-bottom:35px;
+    line-height:1.8;
+    margin-bottom:25px;
 }
 
 /* ===========================
@@ -364,7 +364,7 @@ footer p{
     }
 
     .hero-title{
-    font-size:70px;
+    font-size:60px;
 }
 
     .hero p{
@@ -378,7 +378,7 @@ footer p{
 
     .boy,
     .girl{
-        width:250px;
+        width:300px;
         max-width:none;
     }
 
