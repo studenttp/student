@@ -34,6 +34,9 @@ result.innerHTML=`
 </div>
 
 `;
+playError();
+return;
+}
 
 // البحث في Firebase
 
