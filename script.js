@@ -1,3 +1,5 @@
+import { db } from "./firebase.js";
+
 const clappingSound = new Audio("assets/sounds/clapping.mp3");
 const clickSound = new Audio("assets/sounds/click.wav");
 const magicSound = new Audio("assets/sounds/magic.mp3");
