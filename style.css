@@ -26,569 +26,130 @@ body{
 =========================== */
 
 .hero{
-
     min-height:100vh;
     background:linear-gradient(#FFFDF5,#FAF9F6);
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     text-align:center;
-
     position:relative;
     overflow:hidden;
-
 }
 
-
 .hero-content{
-
     width:90%;
     max-width:900px;
     position:relative;
     z-index:2;
-
 }
-
 
 .hero h1{
-
     font-size:clamp(40px,6vw,64px);
     color:#FF9800;
-
     text-shadow:3px 3px white;
-
     margin-bottom:15px;
-
 }
-
 
 .hero p{
-
     font-size:clamp(18px,3vw,26px);
-
     line-height:1.8;
-
     color:#555;
-
     margin-bottom:35px;
-
 }
-
-
 
 /* زر البداية */
-
 .start-btn{
-
     display:inline-block;
-
     padding:14px 40px;
-
     background:#FFB300;
-
     color:white;
-
     font-size:22px;
-
     border-radius:50px;
-
     text-decoration:none;
-
     box-shadow:0 8px 20px rgba(0,0,0,.15);
-
 }
-
-
 
 /* ===========================
    صور العنوان الرئيسي
 =========================== */
 
+.title-images{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+
+.title-images h1{
+    margin:0;
+}
 
 .boy,
 .girl{
-
-    position:absolute;
-
-    bottom:25px;
-
     width:220px;
-
     max-width:22vw;
-
     animation:float 3s infinite ease-in-out;
-
-    z-index:1;
-
 }
-
-
-.boy{
-
-    right:30px;
-
-}
-
-
-.girl{
-
-    left:30px;
-
-}
-
-
 
 /* ===========================
    البحث
 =========================== */
 
-
 .search-box{
-
     width:92%;
-
     max-width:900px;
-
     margin:60px auto;
-
     background:white;
-
     padding:35px;
-
     border-radius:30px;
-
     box-shadow:0 10px 30px rgba(0,0,0,.08);
-
+    text-align:center;
 }
-
 
 .search-box h2{
-
     color:#2196F3;
-
     font-size:36px;
-
 }
-
 
 .search-box input{
-
     width:100%;
-
     padding:16px;
-
     margin-top:20px;
-
     border:3px solid #90CAF9;
-
     border-radius:20px;
-
     font-size:18px;
-
 }
 
-
+.search-box button{
+    margin-top:15px;
+    padding:12px 30px;
+    background:#2196F3;
+    color:white;
+    border:none;
+    border-radius:20px;
+    font-size:18px;
+    cursor:pointer;
+}
 
 /* ===========================
    نجم الشهر
 =========================== */
 
-
 .star-month{
-
     width:92%;
-
     max-width:900px;
-
-    margin:auto;
-
-}
-
-
-.star-month h2{
-
-    color:#FF9800;
-
-    font-size:30px;
-
-}
-
-
-.winner{
-
-    background:white;
-
-    padding:20px;
-
-    border-radius:25px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-}
-
-
-..medal{
-
-    font-size:80px;
-    text-align:center;
-    display:block;
-    }
-.winner{
-    text-align:center;
-}
-
-
-.winner h3{
-
-    color:#E91E63;
-
-    font-size:32px;
-
-}
-
-
-
-/* ===========================
-   دليل النقاط
-=========================== */
-
-
-.guide{
-
-    width:92%;
-
-    max-width:900px;
-
     margin:70px auto;
-
 }
-
-
-.guide-title{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-
-.guide-title h2{
-
-    color:#4CAF50;
-
-    font-size:36px;
-
-}
-
-
-
-/* صورة girl2 */
-
-.small-character{
-
-    width:40px;
-
-    height:auto;
-
-}
-
-
-
-/* البطاقات */
-
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:25px;
-
-    margin-top:30px;
-
-}
-
-
-.card{
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:30px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-    text-align:center;
-
-    font-size:45px;
-
-}
-
-
-.card h3{
-
-    font-size:22px;
-
-}
-
-
-.card span{
-
-    display:inline-block;
-
-    margin-top:15px;
-
-    padding:8px 20px;
-
-    border-radius:30px;
-
-    background:#E8F5E9;
-
-    color:#2E7D32;
-
-    font-size:20px;
-
-}
-
-
-
-.danger span{
-
-    background:#FFEBEE;
-
-    color:#C62828;
-
-}
-
-
-
-/* ===========================
-   الفوتر
-=========================== */
-
-
-footer{
-
-    margin-top:60px;
-
-    background:#FFD54F;
-
-    padding:25px;
-
-    text-align:center;
-
-}
-
-
-
-/* ===========================
-   الحركة
-=========================== */
-
-
-@keyframes float{
-
-    0%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-
-    100%{
-        transform:translateY(0);
-    }
-
-}
-
-
-
-/* ===========================
-   الجوال
-=========================== */
-
-
-@media(max-width:600px){
-
-
-.hero{
-
-    min-height:90vh;
 
 .star-month h2{
-    font-size:26px;
+    color:#FF9800;
+    font-size:30px;
+    text-align:center;
+    margin-bottom:20px;
 }
 
 .winner{
-    padding:18px;
-}
-
-.medal{
-    font-size:40px;
-}
-
-
-
-
-.boy,
-.girl{
-
-    width:200px;
-
-    bottom:20px;
-
-}
-
-
-.boy{
-
-    right:10px;
-
-}
-
-
-.girl{
-
-    left:10px;
-
-}
-
-
-
-.hero h1{
-
-    font-size:38px;
-
-}
-
-
-.hero p{
-
-    font-size:18px;
-
-}
-
-
-
-.cards{
-
-    grid-template-columns:1fr;
-
-}
-
-
-
-.search-box{
-
-    padding:25px;
-
-}
-
-
-
-.guide-title h2{
-
-    font-size:28px;
-
-}
-
-
-
-.small-character{
-
-    width:90px;
-
-}
-.title-images{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-
-}
-
-
-
-.title-images h1{
-
-    margin:0;
-
-}
-.guide-title img.small-character{
-    width:40px !important;
-    height:auto !important;
-}
-
-
-@media(max-width:600px){
-
-    .guide-title img.small-character{
-        width:30px !important;
-    }
-.guide-title .guide-girl2{
-    width:35px !important;
-    height:auto !important;
-    .title-images .boy,
-.title-images .girl{
-
-    width:100px;
-
-}
-
-
-@media(max-width:600px){
-
-    .guide-title .guide-girl2{
-        width:100px !important;
-    }
-.winner{
-    text-align:center;
-}
-
-.medal{
-    display:block;
-    width:100%;
-    text-align:center;
-    font-size:55px !important;
-}
-
-
-.winner{
-    text-align:center;
-}
-
-.medal{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:70px;
-    margin:0 auto 15px;
-}
-.title-images .boy,
-.title-images .girl{
-
-    width:150px;
-
-}
-
-
-@media(max-width:600px){
-
-.title-images .boy,
-.title-images .girl{
-
-    width:80px;
-
-}
-
+    background:white;
+    padding:20px;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
