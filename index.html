@@ -2,152 +2,58 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>🌟 نجوم صفي</title>
-
 <meta name="theme-color" content="#FFD54F">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <header class="hero">
-
 <div class="hero-overlay"></div>
-
 <div class="hero-content">
 
-
-
 <div class="title-images">
-
 <img src="images/girl.png" class="girl">
-
-<h1>
-🌟 نجوم صفي 🌟
-</h1>
-
+<h1>🌟 نجوم صفي 🌟</h1>
 <img src="images/boy.png" class="boy">
-
 </div>
 
-<p>
+<p>كل إنجاز يبدأ بخطوة... وأنت نجم متألق في صفك ⭐</p>
 
-كل إنجاز يبدأ بخطوة...
-
-وأنت نجم متألق في صفك ⭐
-
-</p>
-
-<a href="#search" class="start-btn">
-
-ابدأ الآن
-
-</a>
+<a href="#search" class="start-btn">ابدأ الآن</a>
 
 </div>
-
 </header>
 
-
-
 <section id="search" class="search-box">
-
-<h2>
-
- ابحث عن نجمك🔎
-
-</h2>
-
-<p>
-
-أدخل الرمز الخاص بولي الأمر
-
-</p>
-
-<input
-
-type="text"
-
-id="studentCode"
-
-placeholder="مثال: A102"
-
-autocomplete="off"
-
->
-
-<button onclick="searchStudent()">
-
-بحث
-
-</button>
-
+<h2>ابحث عن نجمك🔎</h2>
+<p>أدخل الرمز الخاص بولي الأمر</p>
+<input type="text" id="studentCode" placeholder="مثال: A102" autocomplete="off">
+<button onclick="searchStudent()">بحث</button>
 <div id="result"></div>
-
 </section>
-
-
 
 <section class="star-month">
-
-<h2>
-
-🏆 نجم الصف لهذا الشهر🏆
-
-</h2>
-
+<h2>🏆 نجم الصف لهذا الشهر🏆</h2>
 <div class="winner">
-
-<div class="medal">
-
-🥇
-
-</div>
-
-<h3 id="starStudent">
-
-سيتم اختياره قريبًا
-
-</h3>
-
-<p>
-
-استمر في التألق...فالنجاح يبدأ بالمحاولة.
-
-</p>
-
-</div>
-
-
+<div class="medal">🥇</div>
+<h3 id="starStudent">سيتم اختياره قريبًا</h3>
+<p>استمر في التألق...فالنجاح يبدأ بالمحاولة.</p>
 </div>
 </section>
 
-
-
 <section class="guide">
-
 <div class="guide-container">
-
 <div class="cards-side">
 
 <div class="guide-title">
-    <h2>
-    ⭐ دليل النقاط
-    </h2>
-
+<h2>⭐ دليل النقاط</h2>
 </div>
 
 <div class="cards">
@@ -188,23 +94,20 @@ autocomplete="off"
 <span>-2</span>
 </div>
 
+</div>
+</div>
+</div>
+</section>
+
 <footer class="footer">
     <p>💛 صُمم بحب ليكون بيئة مشجعة ومحفزة لأبطال الصف 💛</p>
     <p>أ : مآثر محمد الغنبوصية</p>
 </footer>
 
-
-
-
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
-
 <script src="firebase.js"></script>
 <script src="script.js"></script>
 
-
 </body>
-
 </html>
