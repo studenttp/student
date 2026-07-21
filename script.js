@@ -176,7 +176,7 @@ document.getElementById("starStudent");
 if(starStudent){
 
 starStudent.textContent =
-"عبدالله";
+"سيتم تحديده لاحقًا";
 
 }
 
