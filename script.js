@@ -17,7 +17,7 @@ const takSound = new Audio("assets/sounds/tak.mp3");
 // البحث عن الطالب
 
 function searchStudent(){
-
+console.log("البحث يعمل");
 const code = document
 .getElementById("studentcode")
 .value.trim();
