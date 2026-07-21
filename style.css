@@ -73,6 +73,10 @@ body{
     width:220px;
     animation:float 3s ease-in-out infinite;
 }
+
+.girl{
+    transform:translateY(20px);
+}
 .hero h1{
     font-size:clamp(42px,6vw,66px);
     color:#FF9800;
@@ -109,28 +113,6 @@ body{
     background:#FFA000;
 }
 
-/* ===========================
-   صور العنوان
-=========================== */
-
-.title-images{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:25px;
-    margin-bottom:15px;
-}
-
-.title-images h1{
-    margin:0;
-}
-
-.boy,
-.girl{
-    width:400px;
-    max-width:30vw;
-    animation:float 3s ease-in-out infinite;
-}
 
 /* ===========================
    البحث
