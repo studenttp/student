@@ -174,16 +174,24 @@ body{
 }
 
 .winner{
-    background:#fff;
+    background:linear-gradient(180deg,#FFFDF5,#FFFFFF);
+    border:4px solid #FFD54F;
     border-radius:30px;
     padding:35px;
     text-align:center;
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-    transition:.3s;
+    box-shadow:
+        0 0 15px rgba(255,213,79,.5),
+        0 12px 30px rgba(0,0,0,.08);
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
 }
 
 .winner:hover{
-    transform:translateY(-6px);
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:
+        0 0 25px rgba(255,193,7,.8),
+        0 18px 35px rgba(0,0,0,.12);
 }
 
 .medal{
@@ -194,7 +202,8 @@ body{
 
 .winner h3{
     color:#E91E63;
-    font-size:34px;
+    font-size:36px;
+    font-weight:700;
     margin-bottom:10px;
 }
 
