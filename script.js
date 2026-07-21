@@ -84,15 +84,6 @@ result.innerHTML=`
 </h2>
 
 
-<div class="points">
-
-⭐ عدد النجوم
-
-<h1>
-${student.star}
-</h1>
-
-</div>
 
 
 <div class="points">
