@@ -33,7 +33,7 @@ import { getFirestore } from "firebase/firestore";
 
 // قاعدة البيانات
 
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 // =====================================
 // إضافة طالب
