@@ -48,7 +48,7 @@ body{
     z-index:2;
 }
 .hero-title{
-    font-size:clamp(55px,8vw,90px);
+    font-size:clamp(70px,10vw,120px);
     color:#FF9800;
     text-shadow:4px 4px #fff;
     margin-bottom:25px;
@@ -70,7 +70,7 @@ body{
 
 .boy,
 .girl{
-    width:220px;
+    width:250px;
     animation:float 3s ease-in-out infinite;
 }
 
