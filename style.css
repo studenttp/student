@@ -78,12 +78,6 @@ body{
 .girl{
     transform:translateY(20px);
 }
-.hero h1{
-    font-size:clamp(42px,6vw,66px);
-    color:#FF9800;
-    text-shadow:3px 3px #fff;
-    margin-bottom:15px;
-}
 
 .hero p{
     font-size:clamp(18px,3vw,26px);
