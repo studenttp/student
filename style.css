@@ -48,9 +48,10 @@ body{
     z-index:2;
 }
 .hero-title{
-    font-size:clamp(70px,10vw,120px);
+    font-size:clamp(90px,15vw,140px);
     color:#FF9800;
-    text-shadow:4px 4px #fff;
+    text-shadow:5px 5px 0 #fff;
+    font-weight:900;
     margin-bottom:25px;
 }
 
