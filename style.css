@@ -47,7 +47,32 @@ body{
     position:relative;
     z-index:2;
 }
+.hero-title{
+    font-size:clamp(55px,8vw,90px);
+    color:#FF9800;
+    text-shadow:4px 4px #fff;
+    margin-bottom:25px;
+}
 
+.hero-characters{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:50px;
+    margin-bottom:30px;
+}
+
+.hero p{
+    font-size:clamp(20px,3vw,28px);
+    line-height:2;
+    margin-bottom:35px;
+}
+
+.boy,
+.girl{
+    width:220px;
+    animation:float 3s ease-in-out infinite;
+}
 .hero h1{
     font-size:clamp(42px,6vw,66px);
     color:#FF9800;
