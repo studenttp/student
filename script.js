@@ -43,10 +43,15 @@ return;
 }
 
 // البحث في Firebase
+const q = query(
+    collection(db, "students"),
+    where("code", "==", code)
+);
 
-import { collection, query, where, getDocs } from "firebase/firestore";
 
+getDocs(q)
 .then((snapshot)=>{
+
 
 
 if(snapshot.empty){
