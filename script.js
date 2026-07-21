@@ -39,3 +39,33 @@ const startBtn = document.querySelector(".start-btn");
 startBtn.addEventListener("click", function () {
     clickSound.play();
 });
+// صوت زر البحث
+const searchBtn = document.querySelector(".search-btn");
+
+if(searchBtn){
+
+searchBtn.addEventListener("click", ()=>{
+
+clickSound.play();
+
+});
+
+}
+
+
+// صوت ظهور نتيجة الطالب
+function playSuccess(){
+
+clappingSound.play();
+
+shineSound.play();
+
+}
+
+
+// صوت الخطأ
+function playError(){
+
+takSound.play();
+
+}
