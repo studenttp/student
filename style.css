@@ -102,7 +102,7 @@ body{
 
 .boy,
 .girl{
-    width:340px;
+    width:400px;
     max-width:30vw;
     animation:float 3s ease-in-out infinite;
 }
@@ -374,7 +374,7 @@ footer p{
 
     .boy,
     .girl{
-        width:130px;
+        width:200px;
         max-width:none;
     }
 
