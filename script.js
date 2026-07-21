@@ -228,3 +228,4 @@ clickSound.play();
 });
 
 }
+window.searchStudent = searchStudent;
