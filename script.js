@@ -1,6 +1,3 @@
-import { db } from "./firebase.js";
-import { collection, query, where, getDocs } from "firebase/firestore";
-
 
 const clappingSound = new Audio("assets/sounds/clapping.mp3");
 const clickSound = new Audio("assets/sounds/click.wav");
@@ -42,16 +39,13 @@ playError();
 return;
 }
 
-// البحث في Firebase
-const q = query(
-    collection(db, "students"),
-    where("code", "==", code)
-);
+// البحث في // البحث في Firebase
 
+db.collection("students")
+.where("code","==",code)
+.get()
 
-getDocs(q)
 .then((snapshot)=>{
-
 
 
 if(snapshot.empty){
