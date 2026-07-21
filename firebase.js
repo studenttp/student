@@ -28,15 +28,12 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 
-// تشغيل Firebase
-
-firebase.initializeApp(firebaseConfig);
+import { getFirestore } from "firebase/firestore";
 
 
 // قاعدة البيانات
 
-const db = firebase.firestore();
-
+const db = getFirestore(app);
 
 // =====================================
 // إضافة طالب
