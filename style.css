@@ -456,5 +456,11 @@ footer p{
     footer p{
         font-size:16px;
     }
+.hero{
+    padding-top:0;
+}
 
+.hero-content{
+    margin-top:0;
+}
 }
