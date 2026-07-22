@@ -13,14 +13,44 @@ return;
 
 }
 
-db.collection("students").doc(code).set({
+const studentData = {
 
 name:name,
 code:code,
 points:points,
 message:message
 
-})
+};
+
+if(editingStudent){
+
+db.collection("students").doc(editingStudent).update(studentData)
+
+.then(()=>{
+
+document.getElementById("status").innerHTML="✅ تم تعديل بيانات الطالب";
+
+editingStudent = null;
+
+document.querySelector("button").textContent="حفظ الطالب";
+
+loadStudents();
+
+});
+
+}else{
+
+db.collection("students").doc(code).set(studentData)
+
+.then(()=>{
+
+document.getElementById("status").innerHTML="✅ تم حفظ الطالب";
+
+loadStudents();
+
+});
+
+}
 
 .then(()=>{
 
