@@ -120,3 +120,28 @@ alert("حدث خطأ");
 });
 
 }
+function editStudent(id){
+
+db.collection("students").doc(id).get()
+
+.then((doc)=>{
+
+const student = doc.data();
+
+document.getElementById("name").value = student.name;
+document.getElementById("code").value = student.code;
+document.getElementById("points").value = student.points;
+document.getElementById("message").value = student.message;
+
+editingStudent = id;
+
+document.querySelector("button").textContent = "💾 حفظ التعديلات";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+}
