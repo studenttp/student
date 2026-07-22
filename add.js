@@ -94,3 +94,28 @@ list.innerHTML = html;
 
 document.addEventListener("DOMContentLoaded", loadStudents);
 }
+function deleteStudent(id){
+
+if(!confirm("هل تريد حذف هذا الطالب؟")){
+return;
+}
+
+db.collection("students").doc(id).delete()
+
+.then(()=>{
+
+alert("تم حذف الطالب بنجاح");
+
+loadStudents();
+
+})
+
+.catch((error)=>{
+
+console.log(error);
+
+alert("حدث خطأ");
+
+});
+
+}
