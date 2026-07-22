@@ -1,177 +1,171 @@
 let editingStudent = null;
-function addStudent(){
 
-const name = document.getElementById("name").value.trim();
-const code = document.getElementById("code").value.trim();
-const points = Number(document.getElementById("points").value);
-const message = document.getElementById("message").value.trim();
+function addStudent() {
 
-if(name==="" || code===""){
+    const name = document.getElementById("name").value.trim();
+    const code = document.getElementById("code").value.trim();
+    const points = Number(document.getElementById("points").value);
+    const message = document.getElementById("message").value.trim();
 
-document.getElementById("status").innerHTML="⚠️ يرجى إدخال اسم الطالب والرمز.";
-return;
+    if (name === "" || code === "") {
+        document.getElementById("status").innerHTML = "⚠️ يرجى إدخال اسم الطالب والرمز.";
+        return;
+    }
 
-}
+    const studentData = {
+        name: name,
+        code: code,
+        points: points,
+        message: message
+    };
 
-const studentData = {
+    if (editingStudent) {
 
-name:name,
-code:code,
-points:points,
-message:message
+        db.collection("students").doc(editingStudent).update(studentData)
 
-};
+        .then(() => {
 
-if(editingStudent){
+            document.getElementById("status").innerHTML = "✅ تم تعديل الطالب";
 
-db.collection("students").doc(editingStudent).update(studentData)
+            editingStudent = null;
 
-.then(()=>{
+            document.querySelector("button").textContent = "حفظ الطالب";
 
-document.getElementById("status").innerHTML="✅ تم تعديل بيانات الطالب";
+            clearForm();
 
-editingStudent = null;
+            loadStudents();
 
-document.querySelector("button").textContent="حفظ الطالب";
+        })
 
-loadStudents();
+        .catch(showError);
 
-});
+    } else {
 
-}else{
+        db.collection("students").doc(code).set(studentData)
 
-db.collection("students").doc(code).set(studentData)
+        .then(() => {
 
-.then(()=>{
+            document.getElementById("status").innerHTML = "✅ تم حفظ الطالب";
 
-document.getElementById("status").innerHTML="✅ تم حفظ الطالب";
+            clearForm();
 
-loadStudents();
+            loadStudents();
 
-});
+        })
 
-}
+        .catch(showError);
 
-.then(()=>{
-
-document.getElementById("status").innerHTML="✅ تم حفظ الطالب بنجاح";
-
-document.getElementById("name").value="";
-document.getElementById("code").value="";
-document.getElementById("points").value="";
-document.getElementById("message").value="";
-
-})
-
-.catch((error)=>{
-
-console.log(error);
-
-document.getElementById("status").innerHTML="❌ حدث خطأ أثناء الحفظ";
-
-});
-
-function loadStudents(){
-
-const list = document.getElementById("studentsList");
-
-list.innerHTML = "جاري تحميل الطلاب...";
-
-db.collection("students").get()
-
-.then((snapshot)=>{
-
-if(snapshot.empty){
-
-list.innerHTML = "لا يوجد طلاب.";
-
-return;
+    }
 
 }
 
-let html = "";
+function loadStudents() {
 
-snapshot.forEach((doc)=>{
+    const list = document.getElementById("studentsList");
 
-const student = doc.data();
+    list.innerHTML = "جاري تحميل الطلاب...";
 
-html += `
-<div class="student-card">
+    db.collection("students").get()
 
-<h3>👦 ${student.name}</h3>
+    .then((snapshot) => {
 
-<p>🔑 الرمز: ${student.code}</p>
+        if (snapshot.empty) {
 
-<p>⭐ النقاط: ${student.points}</p>
+            list.innerHTML = "لا يوجد طلاب.";
 
-<p>💬 ${student.message}</p>
+            return;
 
-<button onclick="editStudent('${doc.id}')">✏️ تعديل</button>
+        }
 
-<button onclick="deleteStudent('${doc.id}')">🗑 حذف</button>
+        let html = "";
 
-</div>
+        snapshot.forEach((doc) => {
 
-<br>
-`;
+            const student = doc.data();
 
-});
+            html += `
+            <div class="student-card">
 
-list.innerHTML = html;
+                <h3>${student.name}</h3>
 
-});
+                <p>🔑 ${student.code}</p>
+
+                <p>⭐ ${student.points}</p>
+
+                <p>${student.message}</p>
+
+                <button onclick="editStudent('${doc.id}')">✏️ تعديل</button>
+
+                <button onclick="deleteStudent('${doc.id}')">🗑 حذف</button>
+
+                <hr>
+
+            </div>
+            `;
+
+        });
+
+        list.innerHTML = html;
+
+    });
+
+}
+
+function deleteStudent(id) {
+
+    if (!confirm("هل تريد حذف الطالب؟")) return;
+
+    db.collection("students").doc(id).delete()
+
+    .then(() => {
+
+        loadStudents();
+
+    });
+
+}
+
+function editStudent(id) {
+
+    db.collection("students").doc(id).get()
+
+    .then((doc) => {
+
+        const student = doc.data();
+
+        document.getElementById("name").value = student.name;
+        document.getElementById("code").value = student.code;
+        document.getElementById("points").value = student.points;
+        document.getElementById("message").value = student.message;
+
+        editingStudent = id;
+
+        document.querySelector("button").textContent = "💾 حفظ التعديلات";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
+
+function clearForm() {
+
+    document.getElementById("name").value = "";
+    document.getElementById("code").value = "";
+    document.getElementById("points").value = "";
+    document.getElementById("message").value = "";
+
+}
+
+function showError(error) {
+
+    console.log(error);
+
+    document.getElementById("status").innerHTML = "❌ حدث خطأ";
 
 }
 
 document.addEventListener("DOMContentLoaded", loadStudents);
-}
-function deleteStudent(id){
-
-if(!confirm("هل تريد حذف هذا الطالب؟")){
-return;
-}
-
-db.collection("students").doc(id).delete()
-
-.then(()=>{
-
-alert("تم حذف الطالب بنجاح");
-
-loadStudents();
-
-})
-
-.catch((error)=>{
-
-console.log(error);
-
-alert("حدث خطأ");
-
-});
-
-}
-function editStudent(id){
-
-db.collection("students").doc(id).get()
-
-.then((doc)=>{
-
-const student = doc.data();
-
-document.getElementById("name").value = student.name;
-document.getElementById("code").value = student.code;
-document.getElementById("points").value = student.points;
-document.getElementById("message").value = student.message;
-
-editingStudent = id;
-
-document.querySelector("button").textContent = "💾 حفظ التعديلات";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-});
-
-}
