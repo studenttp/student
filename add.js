@@ -1,3 +1,4 @@
+let editingStudent = null;
 function addStudent(){
 
 const name = document.getElementById("name").value.trim();
