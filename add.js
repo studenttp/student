@@ -40,4 +40,57 @@ document.getElementById("status").innerHTML="❌ حدث خطأ أثناء الح
 
 });
 
+function loadStudents(){
+
+const list = document.getElementById("studentsList");
+
+list.innerHTML = "جاري تحميل الطلاب...";
+
+db.collection("students").get()
+
+.then((snapshot)=>{
+
+if(snapshot.empty){
+
+list.innerHTML = "لا يوجد طلاب.";
+
+return;
+
+}
+
+let html = "";
+
+snapshot.forEach((doc)=>{
+
+const student = doc.data();
+
+html += `
+<div class="student-card">
+
+<h3>👦 ${student.name}</h3>
+
+<p>🔑 الرمز: ${student.code}</p>
+
+<p>⭐ النقاط: ${student.points}</p>
+
+<p>💬 ${student.message}</p>
+
+<button onclick="editStudent('${doc.id}')">✏️ تعديل</button>
+
+<button onclick="deleteStudent('${doc.id}')">🗑 حذف</button>
+
+</div>
+
+<br>
+`;
+
+});
+
+list.innerHTML = html;
+
+});
+
+}
+
+document.addEventListener("DOMContentLoaded", loadStudents);
 }
