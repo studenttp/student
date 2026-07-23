@@ -166,7 +166,7 @@ document.getElementById("starStudent");
 if(starStudent){
 
 starStudent.textContent =
-"سيتم تحديده لاحقًا";
+"  شيخة علي الغنبوصية";
 
 }
 
