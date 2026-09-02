@@ -159,12 +159,12 @@ function clearForm() {
     document.getElementById("message").value = "";
 
 }
-
 function showError(error) {
 
-    console.log(error);
+    console.error("Firebase Error:", error);
 
-    document.getElementById("status").innerHTML = "❌ حدث خطأ";
+    document.getElementById("status").innerHTML =
+        "❌ حدث خطأ: " + error.message;
 
 }
 
