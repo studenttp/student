@@ -460,98 +460,209 @@ footer p{
 .hero-content{
     margin-top:0;
 }
-/* =========================
-   متجر المكافآت
-========================= */
+    
+/* =====================================
+   بطاقة متجر المكافآت
+===================================== */
 
 .rewards-preview {
-    width: 95%;
-    max-width: 900px;
+    width: 90%;
+    max-width: 850px;
     margin: 35px auto;
-    background: linear-gradient(135deg, #ffffff, #fff8e1);
-    padding: 35px 25px;
+
+    background: #ffffff;
+
     border-radius: 35px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
-    border: 2px solid #ffe082;
+
+    padding: 35px 25px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+
+    border: 3px solid #FFD54F;
+
     text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
 }
+
+
+/* لمعة أعلى المستطيل */
+
+.rewards-preview::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 8px;
+
+    background: #FFD54F;
+}
+
+
+/* أيقونة الهدية */
 
 .rewards-preview-icon {
-    font-size: 60px;
-    line-height: 1;
-    margin-bottom: 10px;
+
+    width: 85px;
+    height: 85px;
+
+    margin: 5px auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #FFF7DF;
+
+    border-radius: 50%;
+
+    font-size: 48px;
+
 }
+
+
+/* عنوان المتجر */
 
 .rewards-preview h2 {
-    color: #ff9800;
+
+    margin: 10px 0;
+
+    color: #FF9800;
+
     font-size: 32px;
-    margin: 8px 0;
+
     font-weight: 900;
+
 }
+
+
+/* الوصف */
 
 .rewards-preview > p {
+
+    margin: 8px 0 25px;
+
     color: #666;
+
     font-size: 18px;
-    margin: 10px 0 25px;
+
 }
+
+
+/* بطاقة المكافآت القادمة */
 
 .rewards-coming {
-    background: #fff7df;
-    padding: 25px 20px;
+
+    max-width: 600px;
+
+    margin: auto;
+
+    padding: 22px;
+
+    background: #FFF9E8;
+
     border-radius: 25px;
-    border: 1px dashed #ffd54f;
+
+    border: 2px dashed #FFD54F;
+
 }
+
+
+/* النجوم */
 
 .coming-icon {
+
     font-size: 38px;
+
     margin-bottom: 5px;
+
 }
+
+
+/* عنوان المكافآت */
 
 .rewards-coming h3 {
-    color: #2196f3;
+
+    margin: 5px 0 10px;
+
+    color: #2196F3;
+
     font-size: 23px;
-    margin: 8px 0;
+
     font-weight: 800;
+
 }
+
+
+/* النص */
 
 .rewards-coming p {
+
     margin: 0;
+
     color: #777;
+
     font-size: 16px;
+
     line-height: 1.8;
+
 }
 
-/* مناسب للجوال */
+
+/* 📱 الهاتف */
+
 @media (max-width: 600px) {
 
     .rewards-preview {
+
         width: 92%;
-        padding: 28px 18px;
-        margin: 25px auto;
+
+        padding: 30px 18px;
+
         border-radius: 30px;
+
     }
 
     .rewards-preview-icon {
-        font-size: 50px;
+
+        width: 70px;
+
+        height: 70px;
+
+        font-size: 40px;
+
     }
 
     .rewards-preview h2 {
+
         font-size: 27px;
+
     }
 
     .rewards-preview > p {
+
         font-size: 16px;
+
     }
 
     .rewards-coming {
+
         padding: 20px 15px;
+
     }
 
     .rewards-coming h3 {
+
         font-size: 20px;
+
     }
 
-    .rewards-coming p {
-        font-size: 15px;
-    }
 }
