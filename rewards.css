@@ -1,0 +1,144 @@
+*{
+    box-sizing:border-box;
+    font-family:'Cairo',sans-serif;
+}
+body{
+    margin:0;
+    background:#fff7df;
+    direction:rtl;
+    text-align:center;
+    color:#444;
+}
+.rewards-page{
+    width:92%;
+    max-width:1000px;
+    margin:30px auto 60px;
+}
+header{
+    background:white;
+    padding:30px 20px;
+    border-radius:35px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+header h1{
+    margin:0;
+    color:#ff9800;
+    font-size:38px;
+}
+header p{
+    font-size:18px;
+    margin-bottom:0;
+}
+.student-box{
+    background:white;
+    border-radius:30px;
+    padding:20px;
+    margin:20px auto;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+.student-box p{
+    margin:0;
+    font-size:18px;
+}
+.student-box h2{
+    color:#ff9800;
+    font-size:32px;
+    margin:5px;
+}
+.code-box{
+    background:white;
+    padding:20px;
+    border-radius:30px;
+    margin-bottom:30px;
+}
+input{
+    width:80%;
+    max-width:400px;
+    padding:15px;
+    border:2px solid #ddd;
+    border-radius:20px;
+    font-size:17px;
+    text-align:center;
+}
+button{
+    border:0;
+    background:#4caf50;
+    color:white;
+    padding:14px 25px;
+    border-radius:20px;
+    font-size:17px;
+    cursor:pointer;
+    margin:8px;
+}
+button:hover{
+    background:#388e3c;
+}
+.section-title{
+    color:#ff9800;
+    font-size:30px;
+}
+.rewards-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+.reward-card{
+    background:white;
+    padding:25px;
+    border-radius:30px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.2s;
+}
+.reward-card:hover{
+    transform:translateY(-4px);
+}
+.reward-icon{
+    font-size:55px;
+}
+.reward-card h3{
+    color:#2196f3;
+    font-size:23px;
+}
+.reward-description{
+    min-height:50px;
+    color:#666;
+}
+.reward-price{
+    font-size:22px;
+    font-weight:bold;
+    color:#ff9800;
+}
+.redeem{
+    background:#ff9800;
+}
+.redeem:hover{
+    background:#f57c00;
+}
+.locked{
+    background:#aaa;
+    cursor:not-allowed;
+}
+.message{
+    background:#fff3cd;
+    padding:15px;
+    border-radius:20px;
+    margin:15px 0;
+}
+@media(max-width:600px){
+    .rewards-page{
+        width:94%;
+    }
+    header h1{
+        font-size:30px;
+    }
+    .rewards-list{
+        grid-template-columns:1fr;
+    }
+    input{
+        width:100%;
+    }
+    button{
+        width:90%;
+    }
+}
