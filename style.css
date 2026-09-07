@@ -460,4 +460,98 @@ footer p{
 .hero-content{
     margin-top:0;
 }
+/* =========================
+   متجر المكافآت
+========================= */
+
+.rewards-preview {
+    width: 95%;
+    max-width: 900px;
+    margin: 35px auto;
+    background: linear-gradient(135deg, #ffffff, #fff8e1);
+    padding: 35px 25px;
+    border-radius: 35px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+    border: 2px solid #ffe082;
+    text-align: center;
+}
+
+.rewards-preview-icon {
+    font-size: 60px;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.rewards-preview h2 {
+    color: #ff9800;
+    font-size: 32px;
+    margin: 8px 0;
+    font-weight: 900;
+}
+
+.rewards-preview > p {
+    color: #666;
+    font-size: 18px;
+    margin: 10px 0 25px;
+}
+
+.rewards-coming {
+    background: #fff7df;
+    padding: 25px 20px;
+    border-radius: 25px;
+    border: 1px dashed #ffd54f;
+}
+
+.coming-icon {
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+.rewards-coming h3 {
+    color: #2196f3;
+    font-size: 23px;
+    margin: 8px 0;
+    font-weight: 800;
+}
+
+.rewards-coming p {
+    margin: 0;
+    color: #777;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* مناسب للجوال */
+@media (max-width: 600px) {
+
+    .rewards-preview {
+        width: 92%;
+        padding: 28px 18px;
+        margin: 25px auto;
+        border-radius: 30px;
+    }
+
+    .rewards-preview-icon {
+        font-size: 50px;
+    }
+
+    .rewards-preview h2 {
+        font-size: 27px;
+    }
+
+    .rewards-preview > p {
+        font-size: 16px;
+    }
+
+    .rewards-coming {
+        padding: 20px 15px;
+    }
+
+    .rewards-coming h3 {
+        font-size: 20px;
+    }
+
+    .rewards-coming p {
+        font-size: 15px;
+    }
 }
