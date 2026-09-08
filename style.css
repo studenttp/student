@@ -666,3 +666,38 @@ footer p{
     }
 
 }
+/* ===========================
+   متجر المكافآت - الآيباد فقط
+=========================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .rewards-preview {
+        width: 92%;
+        max-width: 850px;
+        padding: 30px 18px;
+        border-radius: 30px;
+    }
+
+    .rewards-preview-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 40px;
+    }
+
+    .rewards-preview h2 {
+        font-size: 27px;
+    }
+
+    .rewards-preview > p {
+        font-size: 16px;
+    }
+
+    .rewards-coming {
+        padding: 20px 15px;
+    }
+
+    .rewards-coming h3 {
+        font-size: 20px;
+    }
+}
