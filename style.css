@@ -701,3 +701,86 @@ footer p{
         font-size: 20px;
     }
 }
+/* =====================================
+   متجر المكافآت - الآيباد فقط
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1200px) {
+
+    .rewards-preview {
+        width: 92%;
+        max-width: 850px;
+        margin: 35px auto;
+        background: #ffffff;
+        border-radius: 30px;
+        padding: 30px 18px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+        border: 3px solid #FFD54F;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .rewards-preview::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: #FFD54F;
+    }
+
+    .rewards-preview-icon {
+        width: 70px;
+        height: 70px;
+        margin: 5px auto 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #FFF7DF;
+        border-radius: 50%;
+        font-size: 40px;
+    }
+
+    .rewards-preview h2 {
+        margin: 10px 0;
+        color: #FF9800;
+        font-size: 27px;
+        font-weight: 900;
+    }
+
+    .rewards-preview > p {
+        margin: 8px 0 25px;
+        color: #666;
+        font-size: 16px;
+    }
+
+    .rewards-coming {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px 15px;
+        background: #FFF9E8;
+        border-radius: 25px;
+        border: 2px dashed #FFD54F;
+    }
+
+    .coming-icon {
+        font-size: 38px;
+        margin-bottom: 5px;
+    }
+
+    .rewards-coming h3 {
+        margin: 5px 0 10px;
+        color: #2196F3;
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .rewards-coming p {
+        margin: 0;
+        color: #777;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+}
