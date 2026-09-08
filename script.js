@@ -5,7 +5,6 @@ const magicSound = new Audio("assets/sounds/magic.mp3");
 const shineSound = new Audio("assets/sounds/shine.mp3");
 const takSound = new Audio("assets/sounds/tak.mp3");
 const titleSound = new Audio("assets/sounds/VoicesAI_Miku_Hatsune_ScreenRecording_001252_08092026.mov");
-
 // ===================================
 // نجوم صفي
 // ===================================
@@ -216,14 +215,12 @@ clickSound.play();
 window.searchStudent = searchStudent;
 // صوت عنوان نجوم صفي
 document.addEventListener("DOMContentLoaded", () => {
+    const title = document.querySelector(".hero-title");
 
-  const title = document.querySelector("h1");
-
-  if (title) {
-    title.addEventListener("click", () => {
-      titleSound.currentTime = 0;
-      titleSound.play();
-    });
-  }
-
+    if (title) {
+        title.addEventListener("click", () => {
+            titleSound.currentTime = 0;
+            titleSound.play();
+        });
+    }
 });
