@@ -214,3 +214,16 @@ clickSound.play();
 
 }
 window.searchStudent = searchStudent;
+// صوت عنوان نجوم صفي
+document.addEventListener("DOMContentLoaded", () => {
+
+  const title = document.querySelector("h1");
+
+  if (title) {
+    title.addEventListener("click", () => {
+      titleSound.currentTime = 0;
+      titleSound.play();
+    });
+  }
+
+});
