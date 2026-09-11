@@ -2,489 +2,267 @@
     box-sizing:border-box;
     font-family:'Cairo',sans-serif;
 }
-
 body{
     margin:0;
     background:#fff8e7;
     color:#444;
     direction:rtl;
 }
-
 button{
     font-family:'Cairo',sans-serif;
     border:0;
     cursor:pointer;
 }
-
-
 /* =========================
    تسجيل الدخول
 ========================= */
-
 .login-box{
-
     width:90%;
     max-width:450px;
-
     margin:80px auto;
-
     background:white;
-
     padding:40px 25px;
-
     border-radius:35px;
-
     text-align:center;
-
     box-shadow:0 10px 30px rgba(0,0,0,.08);
-
 }
-
 .login-icon{
     font-size:65px;
 }
-
 .login-box h1{
     color:#ff9800;
     margin:10px 0 0;
 }
-
 .login-box p{
     color:#777;
 }
-
 .login-box input{
-
     width:100%;
-
     padding:15px;
-
     border:2px solid #eee;
-
     border-radius:18px;
-
     font-size:16px;
-
     text-align:center;
-
     margin:15px 0;
-
 }
-
 .login-box button{
-
     width:100%;
-
     padding:15px;
-
     border-radius:18px;
-
     background:#ff9800;
-
     color:white;
-
     font-size:17px;
-
 }
-
 #loginError{
     color:#e53935;
 }
-
-
 /* =========================
    لوحة التحكم
 ========================= */
-
 .dashboard{
-
     display:none;
-
     width:94%;
-
     max-width:1100px;
-
     margin:30px auto 60px;
-
 }
-
 .dashboard-header{
-
     background:white;
-
     padding:25px;
-
     border-radius:30px;
-
     box-shadow:0 8px 25px rgba(0,0,0,.07);
-
     margin-bottom:25px;
-
 }
-
 .dashboard-header h1{
-
     margin:0;
-
     color:#ff9800;
-
 }
-
-
 /* =========================
    الأقسام
 ========================= */
-
 .panel{
-
     background:white;
-
     padding:25px;
-
     border-radius:30px;
-
     margin-bottom:25px;
-
     box-shadow:0 8px 25px rgba(0,0,0,.07);
-
 }
-
 .panel h2{
-
     color:#ff9800;
-
     margin-top:0;
-
 }
-
 .section-description{
-
     color:#777;
-
 }
-
 .form-grid{
-
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:12px;
-
     margin:20px 0;
-
 }
-
 input,
 textarea{
-
     width:100%;
-
     padding:14px;
-
     border:2px solid #eee;
-
     border-radius:16px;
-
     font-size:16px;
-
     outline:none;
-
 }
-
 textarea{
-
     min-height:100px;
-
     resize:vertical;
-
     margin-bottom:12px;
-
 }
-
 input:focus,
 textarea:focus{
-
     border-color:#ffcc66;
-
 }
-
-
 /* =========================
    الأزرار
 ========================= */
-
 .main-button{
-
     background:#4caf50;
-
     color:white;
-
     padding:14px 25px;
-
     border-radius:18px;
-
     font-size:16px;
-
+    margin:5px;
 }
-
 .main-button:hover{
     background:#388e3c;
 }
-
 .cancel-button{
-
     background:#999;
-
     color:white;
-
     padding:14px 25px;
-
     border-radius:18px;
-
     font-size:16px;
-
-    margin-right:8px;
-
+    margin:5px;
 }
-
-
 /* =========================
    القوائم
 ========================= */
-
 .sub-title{
-
     margin-top:30px;
-
     color:#555;
-
 }
-
-
 .student-card,
 .reward-manager-card,
 .request-card{
-
     background:#fffaf0;
-
     border:2px solid #f5ead2;
-
     border-radius:22px;
-
     padding:18px;
-
     margin:12px 0;
-
 }
-
-
 .student-card h3,
 .reward-manager-card h3{
-
     color:#2196f3;
-
     margin-top:0;
-
 }
-
-
 .card-actions{
-
     display:flex;
-
     gap:8px;
-
     flex-wrap:wrap;
-
     margin-top:12px;
-
 }
-
 .edit-button{
-
     background:#2196f3;
-
     color:white;
-
     padding:10px 18px;
-
     border-radius:14px;
-
 }
-
 .delete-button{
-
     background:#e53935;
-
     color:white;
-
     padding:10px 18px;
-
     border-radius:14px;
-
 }
-
-
 /* =========================
    الطلبات
 ========================= */
-
 .requests-title{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:20px;
-
 }
-
 .pending-count{
-
     min-width:50px;
-
     height:50px;
-
     border-radius:50%;
-
     background:#e53935;
-
     color:white;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     font-size:20px;
-
     font-weight:bold;
-
 }
-
 .request-card{
-
     border-right:6px solid #ff9800;
-
 }
-
 .request-card h3{
-
     color:#ff9800;
-
 }
-
 .request-info{
-
     line-height:1.9;
-
 }
-
 .approve-button{
-
     background:#4caf50;
-
     color:white;
-
     padding:11px 20px;
-
     border-radius:14px;
-
 }
-
 .reject-button{
-
     background:#e53935;
-
     color:white;
-
     padding:11px 20px;
-
     border-radius:14px;
-
 }
-
 .status-approved{
-
     color:#4caf50;
-
     font-weight:bold;
-
 }
-
 .status-rejected{
-
     color:#e53935;
-
     font-weight:bold;
-
 }
-
-.status-pending{
-
-    color:#ff9800;
-
-    font-weight:bold;
-
-}
-
-
 /* =========================
    الرسائل
 ========================= */
-
 #studentStatus,
 #rewardStatus{
-
     margin:15px 0;
-
     font-weight:bold;
-
 }
-
-
 /* =========================
    الجوال
 ========================= */
-
 @media(max-width:700px){
-
     .dashboard{
-
         width:94%;
-
         margin-top:15px;
-
     }
-
     .form-grid{
-
         grid-template-columns:1fr;
-
     }
-
     .panel{
-
         padding:18px;
-
         border-radius:25px;
-
     }
-
     .requests-title{
-
         align-items:flex-start;
-
     }
-
+    .card-actions{
+        flex-direction:column;
+    }
     .card-actions button{
-
         width:100%;
-
     }
-
+    .main-button,
+    .cancel-button{
+        width:100%;
+        margin:5px 0;
+    }
 }
