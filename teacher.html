@@ -7,10 +7,281 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>لوحة المعلمة</title>
+<title>لوحة المعلمة | نجوم صفي</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="teacher.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     تسجيل الدخول
+========================= -->
+
+<div id="loginBox" class="login-box">
+
+    <div class="login-icon">👩🏻‍🏫</div>
+
+    <h1>لوحة المعلمة</h1>
+
+    <p>نجوم صَفّي ⭐</p>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="أدخل كلمة المرور">
+
+    <button onclick="login()">
+        دخول 🔐
+    </button>
+
+    <p id="loginError"></p>
+
+</div>
+
+
+
+<!-- =========================
+     لوحة التحكم
+========================= -->
+
+<div id="dashboard" class="dashboard">
+
+
+<header class="dashboard-header">
+
+    <div>
+
+        <h1>🌟 لوحة المعلمة</h1>
+
+        <p>
+            إدارة نجوم صَفّي بكل سهولة
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     إدارة الطلاب
+========================= -->
+
+<section class="panel">
+
+    <h2>👩🏻‍🎓 إدارة الطلاب</h2>
+
+    <p class="section-description">
+        إضافة الطلاب وتعديل بياناتهم ونقاطهم.
+    </p>
+
+
+    <div class="form-grid">
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="اسم الطالب">
+
+        <input
+            type="text"
+            id="studentCode"
+            placeholder="رمز الطالب">
+
+        <input
+            type="number"
+            id="studentPoints"
+            placeholder="النقاط">
+
+    </div>
+
+
+    <button
+        class="main-button"
+        onclick="addStudent()">
+
+        ➕ إضافة الطالب
+
+    </button>
+
+
+    <div id="studentStatus"></div>
+
+
+    <h3 class="sub-title">
+        📋 قائمة الطلاب
+    </h3>
+
+
+    <div id="studentsList">
+
+        جاري تحميل الطلاب...
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     إدارة المكافآت
+========================= -->
+
+<section class="panel rewards-manager">
+
+    <h2>🎁 إدارة المكافآت</h2>
+
+    <p class="section-description">
+        أضيفي المكافآت التي يمكن للطلاب استبدال نقاطهم بها.
+    </p>
+
+
+    <div class="form-grid">
+
+        <input
+            type="text"
+            id="rewardName"
+            placeholder="اسم المكافأة">
+
+        <input
+            type="number"
+            id="rewardPrice"
+            placeholder="عدد النقاط">
+
+        <input
+            type="text"
+            id="rewardIcon"
+            placeholder="رمز المكافأة مثل 🎁">
+
+    </div>
+
+
+    <textarea
+        id="rewardDescription"
+        placeholder="وصف المكافأة"></textarea>
+
+
+    <button
+        class="main-button"
+        id="rewardSaveButton"
+        onclick="saveReward()">
+
+        ➕ إضافة المكافأة
+
+    </button>
+
+
+    <button
+        class="cancel-button"
+        id="cancelRewardButton"
+        onclick="cancelRewardEdit()"
+        style="display:none;">
+
+        إلغاء التعديل
+
+    </button>
+
+
+    <div id="rewardStatus"></div>
+
+
+    <h3 class="sub-title">
+        🛍️ المكافآت الحالية
+    </h3>
+
+
+    <div id="rewardsManagerList">
+
+        جاري تحميل المكافآت...
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     طلبات المكافآت
+========================= -->
+
+<section class="panel requests-panel">
+
+    <div class="requests-title">
+
+        <div>
+
+            <h2>🔔 طلبات المكافآت</h2>
+
+            <p class="section-description">
+                الطلبات التي أرسلها الطلاب لاستبدال نقاطهم.
+            </p>
+
+        </div>
+
+
+        <div
+            id="pendingCount"
+            class="pending-count">
+
+            0
+
+        </div>
+
+    </div>
+
+
+    <div id="rewardRequestsList">
+
+        جاري تحميل الطلبات...
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    <p>
+        نجوم صَفّي ⭐
+    </p>
+
+    <p>
+        أ : مآثر محمد الغنبوصية
+    </p>
+
+</footer>
+
+
+</div>
+
+
+
+<!-- Firebase -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+
+<script src="firebase.js"></script>
+
+<script src="teacher.js"></script>
+
+
+</body>
+
+</html>
