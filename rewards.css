@@ -768,4 +768,265 @@ button:hover {
         height: 90px;
         font-size: 50px;
     }
+    /* =========================================
+   شكل المكافآت فقط - تصميم الرفوف
+========================================= */
+
+#rewardsList.rewards-list {
+    position: relative;
+
+    display: grid !important;
+
+    grid-template-columns: repeat(3, 1fr) !important;
+
+    gap: 55px 10px !important;
+
+    padding: 25px 20px 40px !important;
+
+    background: #fffdf5;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+}
+
+
+/* الرف الأفقي */
+
+#rewardsList.rewards-list::before,
+#rewardsList.rewards-list::after {
+    content: "";
+
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+
+    height: 14px;
+
+    background: #e9a928;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 4px 0 #d89417;
+}
+
+#rewardsList.rewards-list::before {
+    top: 50%;
+}
+
+#rewardsList.rewards-list::after {
+    bottom: 20px;
+}
+
+
+/* =========================================
+   البطاقة
+========================================= */
+
+#rewardsList .reward-card {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 230px !important;
+
+    padding: 10px !important;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+}
+
+
+/* =========================================
+   صورة / أيقونة المكافأة
+========================================= */
+
+#rewardsList .reward-icon {
+
+    width: 105px !important;
+    height: 105px !important;
+
+    margin: 0 auto 8px !important;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #fff8e3 !important;
+
+    border-radius: 18px !important;
+
+    border: none !important;
+
+    font-size: 58px !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   اسم المكافأة
+========================================= */
+
+#rewardsList .reward-card h3 {
+
+    width: 90% !important;
+
+    margin: 0 auto 5px !important;
+
+    padding: 6px 5px !important;
+
+    background: white !important;
+
+    border: 3px solid #efb13a !important;
+
+    border-radius: 15px !important;
+
+    color: #444 !important;
+
+    font-size: 17px !important;
+
+    font-weight: 800;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   الوصف
+========================================= */
+
+#rewardsList .reward-description {
+
+    width: 95%;
+
+    min-height: 35px !important;
+
+    margin: 3px auto !important;
+
+    color: #666 !important;
+
+    font-size: 12px !important;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   السعر
+========================================= */
+
+#rewardsList .reward-price {
+
+    margin: 3px 0 !important;
+
+    color: #ef9916 !important;
+
+    font-size: 15px !important;
+
+    font-weight: 900;
+}
+
+
+/* =========================================
+   زر الطلب
+========================================= */
+
+#rewardsList .reward-card button {
+
+    width: 90% !important;
+
+    margin-top: 5px !important;
+
+    padding: 7px !important;
+
+    border-radius: 12px !important;
+
+    font-size: 12px !important;
+}
+
+
+/* =========================================
+   تأثير عند المرور
+========================================= */
+
+#rewardsList .reward-card:hover {
+    transform: translateY(-5px) !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   الجوال
+========================================= */
+
+@media (max-width: 600px) {
+
+    #rewardsList.rewards-list {
+
+        grid-template-columns: repeat(2, 1fr) !important;
+
+        gap: 45px 5px !important;
+
+        padding: 20px 8px 35px !important;
+    }
+
+
+    #rewardsList .reward-card {
+
+        min-height: 220px !important;
+
+        padding: 5px !important;
+    }
+
+
+    #rewardsList .reward-icon {
+
+        width: 82px !important;
+        height: 82px !important;
+
+        font-size: 45px !important;
+    }
+
+
+    #rewardsList .reward-card h3 {
+
+        width: 95% !important;
+
+        font-size: 14px !important;
+
+        border-width: 2px !important;
+    }
+
+
+    #rewardsList .reward-description {
+
+        font-size: 11px !important;
+    }
+
+
+    #rewardsList .reward-price {
+
+        font-size: 13px !important;
+    }
+}
 }
