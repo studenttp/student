@@ -64,16 +64,13 @@
         اجمع نقاطك، فكل نقطة تقرّبك من مكافأتك! ⭐
     </p>
 
-    <div class="rewards-coming">
+<div id="rewards-list" class="rewards-list">
 
-        <div class="coming-icon">✨</div>
-
-        <h3>المكافآت قادمة قريبًا!</h3>
-
-        <p>
-            استمر في جمع النجوم، وسيتم الإعلان عن المكافآت قريبًا.
-        </p>
+    <div class="rewards-loading">
+        ✨ جارٍ تحميل المكافآت...
     </div>
+
+</div>
 
 
 </section>
@@ -138,6 +135,91 @@
 
 <script src="firebase.js"></script>
 <script src="script.js"></script>
+
+<script>
+
+const rewardsList = document.getElementById("rewards-list");
+
+function loadRewards() {
+
+    db.collection("rewards")
+        .orderBy("createdAt", "desc")
+        .get()
+        .then((snapshot) => {
+
+            rewardsList.innerHTML = "";
+
+            if (snapshot.empty) {
+
+                rewardsList.innerHTML = `
+                    <div class="rewards-coming">
+                        <div class="coming-icon">✨</div>
+
+                        <h3>المكافآت قادمة قريبًا!</h3>
+
+                        <p>
+                            استمر في جمع النجوم، وسيتم الإعلان عن المكافآت قريبًا.
+                        </p>
+                    </div>
+                `;
+
+                return;
+            }
+
+            snapshot.forEach((doc) => {
+
+                const reward = doc.data();
+
+                const card = document.createElement("div");
+
+                card.className = "reward-card";
+
+                card.innerHTML = `
+                    <div class="reward-icon">
+                        ${reward.icon || "🎁"}
+                    </div>
+
+                    <h3>
+                        ${reward.name || "مكافأة"}
+                    </h3>
+
+                    <div class="reward-price">
+                        ⭐ السعر: ${reward.price || 0} نقطة
+                    </div>
+
+                    <p>
+                        ${reward.description || ""}
+                    </p>
+                `;
+
+                rewardsList.appendChild(card);
+
+            });
+
+        })
+
+        .catch((error) => {
+
+            console.error("خطأ في تحميل المكافآت:", error);
+
+            rewardsList.innerHTML = `
+                <div class="rewards-coming">
+                    <div class="coming-icon">⚠️</div>
+
+                    <h3>تعذر تحميل المكافآت</h3>
+
+                    <p>
+                        يرجى المحاولة مرة أخرى.
+                    </p>
+                </div>
+            `;
+
+        });
+}
+
+loadRewards();
+
+</script>
 
 </body>
 </html>
