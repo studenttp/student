@@ -8,322 +8,311 @@ let currentPoints = 0;
 // تحميل المكافآت
 // =====================================
 
-function loadRewards(){
+function loadRewards() {
 
-    const list =
-        document.getElementById("rewardsList");
+    const list = document.getElementById("rewardsList");
+
+    if (!list) return;
+
+
+    list.innerHTML = `
+        <div class="message">
+            ⏳ جاري تحميل المكافآت...
+        </div>
+    `;
 
 
     db.collection("rewards")
-    .get()
+        .get()
 
-    .then((snapshot)=>{
+        .then((snapshot) => {
 
-        if(snapshot.empty){
+            if (snapshot.empty) {
 
-            list.innerHTML =
-                "لا توجد مكافآت حاليًا 🎁";
+                list.innerHTML = `
+                    <div class="message">
+                        🎁 لا توجد مكافآت حاليًا.
+                    </div>
+                `;
 
-            return;
-
-        }
-
-
-        let html = "";
-
-
-        snapshot.forEach((doc)=>{
-
-            const reward =
-                doc.data();
+                return;
+            }
 
 
-            const price =
-                Number(reward.price) || 0;
+            let html = "";
 
 
-            const canRedeem =
-                currentStudent &&
-                currentPoints >= price;
+            snapshot.forEach((doc) => {
+
+                const reward = doc.data();
+
+                const price =
+                    Number(reward.price) || 0;
 
 
-            html += `
+                const canRedeem =
+                    currentStudent &&
+                    currentPoints >= price;
 
-            <div class="reward-card">
 
-                <div class="reward-icon">
+                html += `
 
-                    ${reward.icon || "🎁"}
+                    <div class="reward-card">
 
+                        <div class="reward-icon">
+                            ${reward.icon || "🎁"}
+                        </div>
+
+
+                        <h3>
+                            ${escapeHtml(
+                                reward.name || "مكافأة"
+                            )}
+                        </h3>
+
+
+                        <p class="reward-description">
+                            ${escapeHtml(
+                                reward.description || ""
+                            )}
+                        </p>
+
+
+                        <div class="reward-price">
+                            ⭐ ${price} نقطة
+                        </div>
+
+
+                        ${
+                            currentStudent
+
+                            ?
+
+                            canRedeem
+
+                            ?
+
+                            `
+                            <button
+                                class="redeem"
+                                onclick="redeemReward('${doc.id}')">
+
+                                🎁 طلب المكافأة
+
+                            </button>
+                            `
+
+                            :
+
+                            `
+                            <button
+                                class="locked"
+                                disabled>
+
+                                🔒 نقاط غير كافية
+
+                            </button>
+                            `
+
+                            :
+
+                            `
+                            <button
+                                class="locked"
+                                disabled>
+
+                                🔐 أدخل رمز الطالب أولًا
+
+                            </button>
+                        }
+
+                    </div>
+
+                `;
+
+            });
+
+
+            list.innerHTML = html;
+
+        })
+
+        .catch((error) => {
+
+            console.error(error);
+
+            list.innerHTML = `
+                <div class="message">
+                    ❌ حدث خطأ في تحميل المكافآت.
                 </div>
-
-
-                <h3>
-
-                    ${escapeHtml(reward.name || "")}
-
-                </h3>
-
-
-                <p class="reward-description">
-
-                    ${escapeHtml(
-                        reward.description || ""
-                    )}
-
-                </p>
-
-
-                <div class="reward-price">
-
-                    ⭐ ${price} نقطة
-
-                </div>
-
-
-                ${
-                    currentStudent
-                    ?
-
-                    canRedeem
-
-                    ?
-
-                    `<button
-                        class="redeem"
-                        onclick="redeemReward('${doc.id}')">
-
-                        🎁 طلب المكافأة
-
-                    </button>`
-
-                    :
-
-                    `<button
-                        class="locked"
-                        disabled>
-
-                        🔒 نقاط غير كافية
-
-                    </button>`
-
-                    :
-
-                    `<button
-                        class="locked"
-                        disabled>
-
-                        🔐 أدخل رمز الطالب أولًا
-
-                    </button>`
-                }
-
-            </div>
-
             `;
 
         });
-
-
-        list.innerHTML = html;
-
-    })
-
-    .catch((error)=>{
-
-        console.error(error);
-
-        list.innerHTML =
-            "❌ حدث خطأ في تحميل المكافآت.";
-
-    });
-
 }
+
 
 
 // =====================================
 // تحميل الطالب
 // =====================================
 
-function loadStudent(){
+function loadStudent() {
 
-    const code =
-        document
-        .getElementById("studentCode")
-        .value
-        .trim();
-
+    const input =
+        document.getElementById("studentCode");
 
     const message =
-        document.getElementById(
-            "studentMessage"
-        );
+        document.getElementById("studentMessage");
 
 
-    if(code === ""){
+    const code =
+        input.value.trim();
+
+
+    if (code === "") {
 
         message.innerHTML = `
-
-        <div class="message">
-
-            ⚠️ أدخل رمز الطالب أولًا.
-
-        </div>
-
+            <div class="message">
+                ⚠️ أدخل رمز الطالب أولًا.
+            </div>
         `;
 
         return;
-
     }
 
 
     db.collection("students")
+        .where("code", "==", code)
+        .get()
 
-    .where("code","==",code)
+        .then((snapshot) => {
 
-    .get()
+            if (snapshot.empty) {
 
-    .then((snapshot)=>{
-
-        if(snapshot.empty){
-
-            currentStudent = null;
-
-            currentStudentCode = null;
-
-            currentStudentName = null;
-
-            currentPoints = 0;
+                currentStudent = null;
+                currentStudentCode = null;
+                currentStudentName = null;
+                currentPoints = 0;
 
 
-            document.getElementById(
-                "studentPoints"
-            ).textContent = "0";
+                document.getElementById(
+                    "studentPoints"
+                ).textContent = "0";
 
 
-            message.innerHTML = `
+                message.innerHTML = `
+                    <div class="message">
+                        ❌ رمز الطالب غير صحيح.
+                    </div>
+                `;
 
-            <div class="message">
 
-                ❌ رمز الطالب غير صحيح.
+                loadRewards();
 
-            </div>
+                return;
+            }
 
-            `;
+
+            snapshot.forEach((doc) => {
+
+                currentStudent = doc.id;
+
+                const student = doc.data();
+
+
+                currentStudentCode =
+                    student.code;
+
+
+                currentStudentName =
+                    student.name;
+
+
+                currentPoints =
+                    Number(student.points) || 0;
+
+
+                document.getElementById(
+                    "studentPoints"
+                ).textContent =
+                    currentPoints;
+
+
+                message.innerHTML = `
+
+                    <div class="message">
+
+                        👋 أهلًا
+                        <strong>
+                            ${escapeHtml(student.name)}
+                        </strong>
+                        🌟
+
+                        <br>
+
+                        لديك الآن
+                        <strong>
+                            ${currentPoints}
+                        </strong>
+                        نقطة.
+
+                    </div>
+
+                `;
+
+            });
 
 
             loadRewards();
 
-            return;
+        })
 
-        }
+        .catch((error) => {
 
-
-        snapshot.forEach((doc)=>{
-
-            currentStudent =
-                doc.id;
-
-
-            const student =
-                doc.data();
-
-
-            currentStudentCode =
-                student.code;
-
-
-            currentStudentName =
-                student.name;
-
-
-            currentPoints =
-                Number(student.points) || 0;
-
-
-            document.getElementById(
-                "studentPoints"
-            ).textContent =
-                currentPoints;
-
+            console.error(error);
 
             message.innerHTML = `
-
-            <div class="message">
-
-                👋 أهلًا
-                <strong>
-                    ${escapeHtml(student.name)}
-                </strong>
-                🌟
-
-                <br>
-
-                يمكنك اختيار مكافأة مناسبة لنقاطك.
-
-            </div>
-
+                <div class="message">
+                    ❌ حدث خطأ في الاتصال.
+                </div>
             `;
 
         });
-
-
-        loadRewards();
-
-    })
-
-    .catch((error)=>{
-
-        console.error(error);
-
-        message.innerHTML = `
-
-        <div class="message">
-
-            ❌ حدث خطأ في الاتصال.
-
-        </div>
-
-        `;
-
-    });
-
 }
+
 
 
 // =====================================
 // طلب المكافأة
 // =====================================
 
-async function redeemReward(rewardId){
+async function redeemReward(rewardId) {
 
-    if(!currentStudent){
+    if (!currentStudent) {
 
         alert(
             "🔐 أدخل رمز الطالب أولًا."
         );
 
         return;
-
     }
 
 
-    try{
+    try {
 
         const rewardSnapshot =
             await db.collection("rewards")
-            .doc(rewardId)
-            .get();
+                .doc(rewardId)
+                .get();
 
 
-        if(!rewardSnapshot.exists){
+        if (!rewardSnapshot.exists) {
 
             alert(
                 "❌ المكافأة غير موجودة."
             );
 
             return;
-
         }
 
 
@@ -335,45 +324,42 @@ async function redeemReward(rewardId){
             Number(reward.price) || 0;
 
 
-        if(currentPoints < price){
+        if (currentPoints < price) {
 
             alert(
                 "⭐ لا توجد نقاط كافية."
             );
 
             return;
-
         }
 
 
-        // =========================
-        // التأكد من عدم وجود طلب
-        // معلق لنفس المكافأة
-        // =========================
+        // =================================
+        // البحث عن الطلبات السابقة
+        // =================================
 
         const requestsSnapshot =
             await db.collection("rewardRequests")
-            .where(
-                "studentId",
-                "==",
-                currentStudent
-            )
-            .get();
+                .where(
+                    "studentId",
+                    "==",
+                    currentStudent
+                )
+                .get();
 
 
         let alreadyPending = false;
 
 
-        requestsSnapshot.forEach((doc)=>{
+        requestsSnapshot.forEach((doc) => {
 
-            const request =
-                doc.data();
+            const request = doc.data();
 
 
-            if(
+            if (
                 request.rewardId === rewardId &&
                 request.status === "pending"
-            ){
+            ) {
 
                 alreadyPending = true;
 
@@ -382,78 +368,74 @@ async function redeemReward(rewardId){
         });
 
 
-        if(alreadyPending){
+        if (alreadyPending) {
 
             alert(
                 "⏳ لديك طلب معلق لهذه المكافأة بالفعل."
             );
 
             return;
-
         }
 
 
-        const confirmed =
-            confirm(
+        // =================================
+        // تأكيد الطلب
+        // =================================
 
-                "هل تريد إرسال طلب الحصول على " +
+        const confirmed = confirm(
 
-                reward.name +
+            "هل تريد إرسال طلب الحصول على " +
+            reward.name +
 
-                " إلى المعلمة؟ 🎁\n\n" +
+            " إلى المعلمة؟ 🎁\n\n" +
 
-                "السعر: " +
+            "السعر: " +
+            price +
+            " نقطة\n\n" +
 
-                price +
+            "لن تُخصم النقاط إلا بعد موافقة المعلمة."
 
-                " نقطة\n\n" +
-
-                "لن تُخصم النقاط إلا بعد موافقة المعلمة."
-
-            );
+        );
 
 
-        if(!confirmed){
-
+        if (!confirmed) {
             return;
-
         }
 
 
-        // =========================
+        // =================================
         // إنشاء الطلب
-        // =========================
+        // =================================
 
-        await db.collection(
-            "rewardRequests"
-        )
-        .add({
+        await db.collection("rewardRequests")
+            .add({
 
-            studentId:
-                currentStudent,
+                studentId:
+                    currentStudent,
 
-            studentCode:
-                currentStudentCode,
+                studentCode:
+                    currentStudentCode,
 
-            studentName:
-                currentStudentName,
+                studentName:
+                    currentStudentName,
 
-            rewardId:
-                rewardId,
+                rewardId:
+                    rewardId,
 
-            rewardName:
-                reward.name,
+                rewardName:
+                    reward.name,
 
-            price:
-                price,
+                price:
+                    price,
 
-            status:
-                "pending",
+                status:
+                    "pending",
 
-            createdAt:
-                firebase.firestore.FieldValue.serverTimestamp()
+                createdAt:
+                    firebase.firestore.FieldValue
+                        .serverTimestamp()
 
-        });
+            });
 
 
         alert(
@@ -466,7 +448,7 @@ async function redeemReward(rewardId){
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(error);
 
@@ -476,29 +458,29 @@ async function redeemReward(rewardId){
         );
 
     }
-
 }
+
 
 
 // =====================================
 // حماية النصوص
 // =====================================
 
-function escapeHtml(text){
+function escapeHtml(text) {
 
     return String(text)
 
-        .replace(/&/g,"&amp;")
+        .replace(/&/g, "&amp;")
 
-        .replace(/</g,"&lt;")
+        .replace(/</g, "&lt;")
 
-        .replace(/>/g,"&gt;")
+        .replace(/>/g, "&gt;")
 
-        .replace(/"/g,"&quot;")
+        .replace(/"/g, "&quot;")
 
-        .replace(/'/g,"&#039;");
-
+        .replace(/'/g, "&#039;");
 }
+
 
 
 // =====================================
@@ -507,5 +489,9 @@ function escapeHtml(text){
 
 document.addEventListener(
     "DOMContentLoaded",
-    loadRewards
+    () => {
+
+        loadRewards();
+
+    }
 );
