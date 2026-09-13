@@ -1,169 +1,771 @@
-*{
-    box-sizing:border-box;
-    font-family:'Cairo',sans-serif;
+* {
+    box-sizing: border-box;
+    font-family: "Cairo", sans-serif;
 }
-body{
-    margin:0;
-    background:#fff7df;
-    direction:rtl;
-    text-align:center;
-    color:#444;
+
+html {
+    scroll-behavior: smooth;
 }
-.rewards-page{
-    width:92%;
-    max-width:1000px;
-    margin:30px auto 60px;
+
+body {
+    margin: 0;
+    direction: rtl;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff8df 0%,
+            #ffe9a8 100%
+        );
+
+    color: #444;
 }
-header{
-    background:white;
-    padding:30px 20px;
-    border-radius:35px;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
-    margin-bottom:20px;
+
+
+/* =========================================
+   الصفحة
+========================================= */
+
+.shop-page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 30px 15px 70px;
 }
-header h1{
-    margin:0;
-    color:#ff9800;
-    font-size:38px;
+
+
+/* =========================================
+   المتجر
+========================================= */
+
+.shop {
+    position: relative;
+
+    width: 100%;
+    max-width: 850px;
+
+    margin: auto;
+
+    background: #ffd35c;
+
+    border: 5px solid #ed991c;
+
+    border-radius: 70px 70px 25px 25px;
+
+    box-shadow:
+        0 15px 35px rgba(130, 85, 10, 0.18);
+
+    overflow: hidden;
 }
-header p{
-    font-size:18px;
-    margin-bottom:0;
+
+
+/* =========================================
+   الشمس
+========================================= */
+
+.sun {
+    position: absolute;
+
+    width: 95px;
+    height: 95px;
+
+    top: 30px;
+    left: 35px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    border: 2px solid rgba(235, 153, 28, 0.25);
 }
-.student-box{
-    background:white;
-    border-radius:30px;
-    padding:20px;
-    margin:20px auto;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+
+/* =========================================
+   أعلى المتجر
+========================================= */
+
+.shop-top {
+    position: relative;
+
+    height: 175px;
+
+    padding-top: 65px;
 }
-.student-box p{
-    margin:0;
-    font-size:18px;
+
+
+/* =========================================
+   المظلة
+========================================= */
+
+.awning {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 95px;
+
+    display: flex;
+
+    overflow: hidden;
+
+    border-bottom: 5px solid #e99417;
+
+    border-radius: 55px 55px 0 0;
+
+    background: #ffd454;
 }
-.student-box h2{
-    color:#ff9800;
-    font-size:32px;
-    margin:5px;
+
+
+.awning-part {
+    flex: 1;
+
+    border-left: 4px solid #ed991c;
+
+    background: #ffd454;
 }
-.code-box{
-    background:white;
-    padding:20px;
-    border-radius:30px;
-    margin-bottom:30px;
+
+
+.awning-part:nth-child(even) {
+    background: #f6a51b;
 }
-input{
-    width:80%;
-    max-width:400px;
-    padding:15px;
-    border:2px solid #ddd;
-    border-radius:20px;
-    font-size:17px;
-    text-align:center;
+
+
+/* =========================================
+   لافتة المتجر
+========================================= */
+
+.shop-sign {
+    position: relative;
+    z-index: 3;
+
+    width: 240px;
+
+    margin: auto;
+
+    padding: 13px 15px;
+
+    background: white;
+
+    border: 4px solid #ed991c;
+
+    border-radius: 40px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #444;
+
+    box-shadow:
+        0 5px 10px rgba(0,0,0,.08);
 }
-button{
-    border:0;
-    background:#4caf50;
-    color:white;
-    padding:14px 25px;
-    border-radius:20px;
-    font-size:17px;
-    cursor:pointer;
-    margin:8px;
+
+
+/* =========================================
+   جسم المتجر
+========================================= */
+
+.shop-body {
+    position: relative;
+
+    margin: 0 20px 20px;
+
+    padding: 30px 25px 45px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 3px solid #f0b22e;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.08);
 }
-button:hover{
-    background:#388e3c;
+
+
+/* =========================================
+   العنوان
+========================================= */
+
+.shop-title h1 {
+    margin: 0;
+
+    color: #f39a18;
+
+    font-size: 38px;
+
+    font-weight: 900;
 }
-.section-title{
-    color:#ff9800;
-    font-size:30px;
+
+
+.shop-title p {
+    margin: 8px 0 25px;
+
+    color: #666;
+
+    font-size: 18px;
 }
-.rewards-list{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+
+
+/* =========================================
+   صندوق الطالب
+========================================= */
+
+.student-box {
+    width: 90%;
+    max-width: 500px;
+
+    margin: 0 auto 18px;
+
+    padding: 15px;
+
+    background: #fff9e9;
+
+    border: 2px solid #f4c451;
+
+    border-radius: 22px;
 }
-.reward-card{
-    background:white;
-    padding:25px;
-    border-radius:30px;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
-    transition:.2s;
+
+
+.student-label {
+    font-size: 17px;
+
+    color: #777;
 }
-.reward-card:hover{
-    transform:translateY(-4px);
+
+
+.student-points {
+    margin-top: 3px;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    color: #ed9717;
 }
-.reward-icon{
-    font-size:55px;
+
+
+/* =========================================
+   صندوق الرمز
+========================================= */
+
+.code-box {
+    width: 100%;
+
+    margin: 15px auto 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
 }
-.reward-card h3{
-    color:#2196f3;
-    font-size:23px;
+
+
+input {
+    width: 300px;
+
+    padding: 13px 18px;
+
+    border: 2px solid #e5b13a;
+
+    border-radius: 18px;
+
+    background: #fff;
+
+    outline: none;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    transition: .2s;
 }
-.reward-description{
-    min-height:50px;
-    color:#666;
+
+
+input:focus {
+    border-color: #f39a18;
+
+    box-shadow:
+        0 0 0 3px rgba(243,154,24,.15);
 }
-.reward-price{
-    font-size:22px;
-    font-weight:bold;
-    color:#ff9800;
+
+
+button {
+    border: 0;
+
+    padding: 13px 22px;
+
+    border-radius: 18px;
+
+    background: #f39a18;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
-.redeem{
-    background:#ff9800;
+
+
+button:hover {
+    transform: translateY(-2px);
+
+    background: #e88705;
 }
-.redeem:hover{
-    background:#f57c00;
+
+
+/* =========================================
+   الرسالة
+========================================= */
+
+.message {
+    margin: 15px auto;
+
+    padding: 12px 18px;
+
+    max-width: 600px;
+
+    background: #fff4d1;
+
+    border: 1px solid #f3ce72;
+
+    border-radius: 17px;
+
+    color: #666;
+
+    font-size: 15px;
 }
-.locked{
-    background:#aaa;
-    cursor:not-allowed;
+
+
+/* =========================================
+   عنوان المكافآت
+========================================= */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 30px 0 25px;
 }
-.message{
-    background:#fff3cd;
-    padding:15px;
-    border-radius:20px;
-    margin:15px 0;
+
+
+.section-title h2 {
+    margin: 0;
+
+    color: #444;
+
+    font-size: 30px;
+
+    font-weight: 900;
 }
-@media(max-width:600px){
-    .rewards-page{
-        width:94%;
+
+
+.section-title span {
+    font-size: 27px;
+}
+
+
+/* =========================================
+   شبكة المكافآت
+========================================= */
+
+.rewards-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    padding: 5px;
+}
+
+
+/* =========================================
+   بطاقة المكافأة
+========================================= */
+
+.reward-card {
+
+    position: relative;
+
+    min-height: 285px;
+
+    padding: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    background: #fffdf5;
+
+    border: 3px solid #f1bd46;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.08);
+
+    transition: .25s;
+}
+
+
+.reward-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.12);
+}
+
+
+/* =========================================
+   أيقونة المكافأة
+========================================= */
+
+.reward-icon {
+
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 5px auto 10px;
+
+    border-radius: 20px;
+
+    background: #fff3cf;
+
+    font-size: 62px;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   اسم المكافأة
+========================================= */
+
+.reward-card h3 {
+
+    width: 100%;
+
+    margin: 5px 0;
+
+    padding: 8px 5px;
+
+    border: 2px solid #f0b43d;
+
+    border-radius: 13px;
+
+    background: white;
+
+    color: #444;
+
+    font-size: 19px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   الوصف
+========================================= */
+
+.reward-description {
+
+    width: 100%;
+
+    min-height: 42px;
+
+    margin: 8px 0;
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   السعر
+========================================= */
+
+.reward-price {
+
+    margin: 4px 0 8px;
+
+    color: #ed9617;
+
+    font-size: 17px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================
+   زر الاستبدال
+========================================= */
+
+.reward-card button {
+
+    width: 95%;
+
+    margin-top: auto;
+
+    padding: 10px;
+
+    border-radius: 13px;
+
+    font-size: 14px;
+}
+
+
+.redeem {
+    background: #f39a18;
+}
+
+
+.redeem:hover {
+    background: #df8305;
+}
+
+
+/* =========================================
+   المكافأة المغلقة
+========================================= */
+
+.locked {
+
+    background: #b7b7b7 !important;
+
+    color: white;
+
+    cursor: not-allowed;
+
+    opacity: .9;
+}
+
+
+.locked:hover {
+    transform: none;
+}
+
+
+/* =========================================
+   شريط أسفل المتجر
+========================================= */
+
+.shop::after {
+
+    content: "";
+
+    display: block;
+
+    height: 55px;
+
+    background:
+        linear-gradient(
+            #f4bd38,
+            #efb32a
+        );
+
+    border-top: 4px solid #e5a51e;
+}
+
+
+/* =========================================
+   الجوال
+========================================= */
+
+@media (max-width: 700px) {
+
+    .shop-page {
+        padding: 15px 8px 40px;
     }
-    header h1{
-        font-size:30px;
-    }
-    .rewards-list{
-        grid-template-columns:1fr;
-    }
-    input{
-        width:100%;
-    }
-    button{
-        width:90%;
-    }
-    /* =========================
-   نفس تصميم الجوال على اللابتوب
-========================= */
 
-.rewards-page{
-    width:94%;
-    max-width:700px;
+
+    .shop {
+
+        border-width: 4px;
+
+        border-radius: 45px 45px 18px 18px;
+    }
+
+
+    .shop-top {
+        height: 145px;
+    }
+
+
+    .awning {
+        height: 78px;
+    }
+
+
+    .shop-sign {
+
+        width: 205px;
+
+        padding: 10px;
+
+        font-size: 17px;
+    }
+
+
+    .shop-body {
+
+        margin: 0 10px 10px;
+
+        padding: 22px 12px 30px;
+    }
+
+
+    .shop-title h1 {
+        font-size: 29px;
+    }
+
+
+    .shop-title p {
+        font-size: 15px;
+    }
+
+
+    .student-box {
+        width: 100%;
+    }
+
+
+    .student-points {
+        font-size: 24px;
+    }
+
+
+    .code-box {
+        flex-direction: column;
+    }
+
+
+    input {
+        width: 100%;
+    }
+
+
+    .code-box button {
+        width: 100%;
+    }
+
+
+    /*
+       بطاقتان في الصف على الجوال
+    */
+
+    .rewards-list {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+
+    .reward-card {
+
+        min-height: 260px;
+
+        padding: 9px;
+
+        border-radius: 15px;
+    }
+
+
+    .reward-icon {
+
+        width: 78px;
+        height: 78px;
+
+        font-size: 45px;
+
+        border-radius: 15px;
+    }
+
+
+    .reward-card h3 {
+
+        font-size: 15px;
+
+        padding: 6px 3px;
+    }
+
+
+    .reward-description {
+
+        font-size: 12px;
+
+        min-height: 35px;
+    }
+
+
+    .reward-price {
+
+        font-size: 14px;
+    }
+
+
+    .reward-card button {
+
+        font-size: 12px;
+
+        padding: 8px 4px;
+    }
 }
 
-header h1{
-    font-size:30px;
-}
 
-.rewards-list{
-    grid-template-columns:1fr;
-}
+/* =========================================
+   الجوال الصغير جدًا
+========================================= */
 
-input{
-    width:100%;
-}
+@media (max-width: 400px) {
 
-button{
-    width:90%;
-    max-width:500px;
+    .rewards-list {
+        grid-template-columns: 1fr;
+    }
 
+
+    .reward-card {
+        min-height: 270px;
+    }
+
+
+    .reward-icon {
+        width: 90px;
+        height: 90px;
+        font-size: 50px;
+    }
 }
