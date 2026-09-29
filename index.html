@@ -140,7 +140,18 @@
 
 const rewardsList = document.getElementById("rewards-list");
 
+
+// =====================================
+// تحميل المكافآت
+// =====================================
+
 function loadRewards() {
+
+    rewardsList.innerHTML = `
+        <div class="rewards-loading">
+            ✨ جارٍ تحميل المكافآت...
+        </div>
+    `;
 
     db.collection("rewards")
         .orderBy("createdAt", "desc")
@@ -170,26 +181,81 @@ function loadRewards() {
 
                 const reward = doc.data();
 
-                const card = document.createElement("div");
+                const price = Number(reward.price) || 0;
+
+                const hasStudent =
+                    !!window.currentStudentId;
+
+                const currentPoints =
+                    Number(window.currentStudentPoints) || 0;
+
+                const canRedeem =
+                    hasStudent && currentPoints >= price;
+
+
+                let buttonHTML = "";
+
+                if (!hasStudent) {
+
+                    buttonHTML = `
+                        <button
+                            class="locked"
+                            disabled>
+                            🔐 ابحث عن طالب أولًا
+                        </button>
+                    `;
+
+                } else if (!canRedeem) {
+
+                    buttonHTML = `
+                        <button
+                            class="locked"
+                            disabled>
+                            ⭐ نقاطك غير كافية
+                        </button>
+                    `;
+
+                } else {
+
+                    buttonHTML = `
+                        <button
+                            class="redeem"
+                            onclick="redeemReward('${doc.id}')">
+                            🎁 طلب المكافأة
+                        </button>
+                    `;
+                }
+
+
+                const card =
+                    document.createElement("div");
 
                 card.className = "reward-card";
 
                 card.innerHTML = `
+
                     <div class="reward-icon">
-                        ${reward.icon || "🎁"}
+                        ${escapeHtml(reward.icon || "🎁")}
                     </div>
 
                     <h3>
-                        ${reward.name || "مكافأة"}
+                        ${escapeHtml(
+                            reward.name || "مكافأة"
+                        )}
                     </h3>
 
                     <div class="reward-price">
-                        ⭐ السعر: ${reward.price || 0} نقطة
+                        ⭐ السعر: ${price} نقطة
                     </div>
 
-                    <p>
-                        ${reward.description || ""}
+                    <p class="reward-description">
+                        ${escapeHtml(
+                            reward.description || ""
+                        )}
                     </p>
+
+                    ${buttonHTML}
+
                 `;
 
                 rewardsList.appendChild(card);
@@ -200,7 +266,10 @@ function loadRewards() {
 
         .catch((error) => {
 
-            console.error("خطأ في تحميل المكافآت:", error);
+            console.error(
+                "خطأ في تحميل المكافآت:",
+                error
+            );
 
             rewardsList.innerHTML = `
                 <div class="rewards-coming">
@@ -216,6 +285,216 @@ function loadRewards() {
 
         });
 }
+
+
+
+// =====================================
+// طلب المكافأة
+// =====================================
+
+async function redeemReward(rewardId) {
+
+    if (!window.currentStudentId) {
+
+        alert(
+            "🔐 ابحث عن الطالب أولًا."
+        );
+
+        return;
+    }
+
+
+    try {
+
+        const rewardSnapshot =
+            await db.collection("rewards")
+                .doc(rewardId)
+                .get();
+
+
+        if (!rewardSnapshot.exists) {
+
+            alert(
+                "❌ المكافأة غير موجودة."
+            );
+
+            return;
+        }
+
+
+        const reward =
+            rewardSnapshot.data();
+
+
+        const price =
+            Number(reward.price) || 0;
+
+
+        const currentPoints =
+            Number(window.currentStudentPoints) || 0;
+
+
+        if (currentPoints < price) {
+
+            alert(
+                "⭐ نقاط الطالب غير كافية."
+            );
+
+            return;
+        }
+
+
+        // =================================
+        // التحقق من وجود طلب سابق
+        // =================================
+
+        const requestsSnapshot =
+            await db.collection("rewardRequests")
+                .where(
+                    "studentId",
+                    "==",
+                    window.currentStudentId
+                )
+                .get();
+
+
+        let alreadyPending = false;
+
+
+        requestsSnapshot.forEach((doc) => {
+
+            const request = doc.data();
+
+
+            if (
+                request.rewardId === rewardId &&
+                request.status === "pending"
+            ) {
+
+                alreadyPending = true;
+
+            }
+
+        });
+
+
+        if (alreadyPending) {
+
+            alert(
+                "⏳ لديك طلب معلق لهذه المكافأة بالفعل."
+            );
+
+            return;
+        }
+
+
+        // =================================
+        // تأكيد الطلب
+        // =================================
+
+        const confirmed = confirm(
+
+            "هل تريد طلب الحصول على " +
+            reward.name +
+
+            "؟ 🎁\n\n" +
+
+            "السعر: " +
+            price +
+            " نقطة\n\n" +
+
+            "لن تُخصم النقاط إلا بعد موافقة المعلمة."
+
+        );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        // =================================
+        // إنشاء الطلب
+        // =================================
+
+        await db.collection("rewardRequests")
+            .add({
+
+                studentId:
+                    window.currentStudentId,
+
+                studentCode:
+                    window.currentStudentCode,
+
+                studentName:
+                    window.currentStudentName,
+
+                rewardId:
+                    rewardId,
+
+                rewardName:
+                    reward.name,
+
+                price:
+                    price,
+
+                status:
+                    "pending",
+
+                createdAt:
+                    firebase.firestore.FieldValue
+                        .serverTimestamp()
+
+            });
+
+
+        alert(
+            "🎉 تم إرسال طلبك إلى المعلمة!\n\n" +
+            "انتظر موافقتها، ولن تُخصم النقاط إلا بعد الموافقة."
+        );
+
+
+        loadRewards();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ حدث خطأ أثناء إرسال الطلب:\n" +
+            error.message
+        );
+
+    }
+
+}
+
+
+
+// =====================================
+// حماية النصوص
+// =====================================
+
+function escapeHtml(text) {
+
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+}
+
+
+
+// تشغيل المتجر
 
 loadRewards();
 
