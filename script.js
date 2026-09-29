@@ -72,7 +72,10 @@ snapshot.forEach((doc)=>{
 
 const student = doc.data();
 
-
+window.currentStudentId = doc.id;
+window.currentStudentCode = student.code;
+window.currentStudentName = student.name;
+window.currentStudentPoints = Number(student.points) || 0;
 
 result.innerHTML=`
 
