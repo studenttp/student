@@ -40,6 +40,9 @@ function addStudent(){
         Number(
             document.getElementById("studentPoints").value
         );
+        const message =
+    document.getElementById("studentMessage")
+    .value.trim();
     const status =
         document.getElementById("studentStatus");
     if(name === "" || code === ""){
