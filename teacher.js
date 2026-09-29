@@ -51,11 +51,11 @@ function addStudent(){
         return;
     }
     const studentData = {
-        name:name,
-        code:code,
-        points:points || 0,
-        message:"بداية مشرقة ⭐"
-    };
+    name:name,
+    code:code,
+    points:points || 0,
+    message:message || "بداية مشرقة ⭐"
+};
     // =========================
     // تعديل الطالب
     // =========================
