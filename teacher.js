@@ -177,6 +177,8 @@ function editStudent(id){
             student.code || "";
         document.getElementById("studentPoints").value =
             student.points || 0;
+            document.getElementById("studentMessage").value =
+    student.message || "";
         editingStudentId = id;
         document.getElementById(
             "studentSaveButton"
@@ -238,6 +240,7 @@ function clearStudentForm(){
     document.getElementById("studentName").value = "";
     document.getElementById("studentCode").value = "";
     document.getElementById("studentPoints").value = "";
+    document.getElementById("studentMessage").value = "";
 }
 // =====================================
 // إدارة المكافآت
