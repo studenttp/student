@@ -184,7 +184,7 @@ body {
 
 
 /* ===========================
-   نجم الشهر
+   ⭐ نجم الشهر
 =========================== */
 
 .star-month {
@@ -204,6 +204,11 @@ body {
     margin-bottom: 25px;
 }
 
+
+/* ===========================
+   🏆 بطاقة نجم الشهر
+=========================== */
+
 .winner {
     background: linear-gradient(180deg, #FFFDF5, #FFFFFF);
 
@@ -215,26 +220,59 @@ body {
 
     text-align: center;
 
-    box-shadow:
-    0 0 12px rgba(255, 213, 79, .9),
-    0 0 25px rgba(255, 213, 79, .7),
-    0 0 45px rgba(255, 213, 79, .5),
-    0 12px 30px rgba(0, 0, 0, .08);
+    /* ✨ التوهج المتحرك */
+    animation: winnerGlow 2s ease-in-out infinite alternate;
 
-    transition: .4s;
+    transition: transform .4s ease;
 
     position: relative;
 
     overflow: hidden;
 }
 
+
+/* حركة البطاقة عند لمسها */
+
 .winner:hover {
     transform: translateY(-8px) scale(1.02);
-
-    box-shadow:
-        0 0 25px rgba(255, 193, 7, .8),
-        0 18px 35px rgba(0, 0, 0, .12);
 }
+
+
+/* ===========================
+   ✨ توهج إطار نجم الشهر
+=========================== */
+
+@keyframes winnerGlow {
+
+    0% {
+        box-shadow:
+            0 0 8px rgba(255, 213, 79, .55),
+            0 0 18px rgba(255, 213, 79, .35),
+            0 0 30px rgba(255, 213, 79, .20),
+            0 12px 30px rgba(0, 0, 0, .08);
+    }
+
+    50% {
+        box-shadow:
+            0 0 15px rgba(255, 213, 79, .80),
+            0 0 30px rgba(255, 213, 79, .60),
+            0 0 45px rgba(255, 213, 79, .35),
+            0 12px 30px rgba(0, 0, 0, .08);
+    }
+
+    100% {
+        box-shadow:
+            0 0 22px rgba(255, 213, 79, 1),
+            0 0 40px rgba(255, 213, 79, .75),
+            0 0 60px rgba(255, 213, 79, .45),
+            0 12px 30px rgba(0, 0, 0, .08);
+    }
+}
+
+
+/* ===========================
+   🥇 الميدالية
+=========================== */
 
 .medal {
     display: block;
@@ -244,17 +282,25 @@ body {
     margin-bottom: 18px;
 }
 
+
+/* اسم نجم الشهر */
+
 .winner h3 {
     color: #E91E63;
 
     font-size: 36px;
+
     font-weight: 700;
 
     margin-bottom: 10px;
 }
 
+
+/* عبارة التشجيع */
+
 .winner p {
     font-size: 20px;
+
     color: #666;
 }
 
@@ -383,8 +429,6 @@ body {
    الرفوف
 ========================================================= */
 
-/* الرف الموجود بين الصفوف */
-
 #rewards-list::before {
     content: "";
 
@@ -407,8 +451,6 @@ body {
     z-index: 1;
 }
 
-
-/* الرف السفلي */
 
 #rewards-list::after {
     content: "";
@@ -467,8 +509,6 @@ body {
     transition: transform .25s ease;
 }
 
-
-/* حركة بسيطة عند لمس المكافأة */
 
 #rewards-list .reward-card:hover {
     transform: translateY(-7px);
@@ -824,7 +864,6 @@ footer p,
 
     .hero p {
         font-size: 18px;
-
         line-height: 1.8;
     }
 
@@ -855,7 +894,6 @@ footer p,
 
     .search-box button {
         width: 100%;
-
         font-size: 18px;
     }
 
