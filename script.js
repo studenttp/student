@@ -244,7 +244,7 @@ document.addEventListener(
         if(starStudent){
 
             starStudent.textContent =
-                "سيتم تحديده لاحقًا";
+                "  سارة منصور الغنبوصية";
 
         }
 
